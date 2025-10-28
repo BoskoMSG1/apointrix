@@ -1,0 +1,203 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - STATS COUNTER
+  Animated statistics section
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="stats-section section section--bg-secondary">
+  <div class="container">
+    
+    {% if section.settings.title != blank %}
+      <div class="section-header text-center" data-aos="fade-up">
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+        {% if section.settings.subtitle != blank %}
+          <p class="section-description">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="stats-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'stat' %}
+          <div class="stat-item" data-aos="zoom-in" data-aos-delay="{{ forloop.index | times: 100 }}" {{ block.shopify_attributes }}>
+            <div class="stat-item__icon">
+              {% if block.settings.icon_emoji != blank %}
+                {{ block.settings.icon_emoji }}
+              {% else %}
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <circle cx="20" cy="20" r="20" fill="currentColor" opacity="0.1"/>
+                  <path d="M20 12V28M12 20H28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              {% endif %}
+            </div>
+            <div class="stat-item__number" data-count-up="{{ block.settings.number }}">0</div>
+            <div class="stat-item__suffix">{{ block.settings.suffix }}</div>
+            <div class="stat-item__label">{{ block.settings.label }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .stats-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-12);
+    margin-top: var(--space-16);
+  }
+
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: var(--space-8);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2xl);
+    transition: all var(--duration-base) var(--ease-out);
+  }
+
+  .stat-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .stat-item__icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+    color: var(--color-primary);
+  }
+
+  .stat-item__number {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1;
+  }
+
+  .stat-item__suffix {
+    display: inline;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+
+  .stat-item__label {
+    margin-top: var(--space-3);
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Stats Counter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Results That Speak for Themselves"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Join thousands of businesses growing with Appointly"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_emoji",
+          "label": "Icon (Emoji)",
+          "default": "📈"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "50"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix",
+          "default": "+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Active Clients"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats Counter",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "👥",
+            "number": "500",
+            "suffix": "+",
+            "label": "Happy Customers"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "📅",
+            "number": "10",
+            "suffix": "k+",
+            "label": "Bookings Monthly"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "⭐",
+            "number": "4",
+            "suffix": ".9",
+            "label": "Average Rating"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "🚀",
+            "number": "99",
+            "suffix": "%",
+            "label": "Client Satisfaction"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,117 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-advanced",
+      "blocks": {
+        "stat-1": {
+          "type": "statistic",
+          "settings": {
+            "number": "50",
+            "suffix": "+",
+            "label": "Active Clients"
+          }
+        },
+        "stat-2": {
+          "type": "statistic",
+          "settings": {
+            "number": "10",
+            "suffix": "k+",
+            "label": "Bookings Monthly"
+          }
+        },
+        "stat-3": {
+          "type": "statistic",
+          "settings": {
+            "number": "99",
+            "suffix": "%",
+            "label": "Customer Satisfaction"
+          }
+        }
+      },
+      "block_order": [
+        "stat-1",
+        "stat-2",
+        "stat-3"
+      ],
+      "settings": {
+        "gradient_color_1": "#007AFF",
+        "gradient_color_2": "#5856D6",
+        "show_pattern": true,
+        "section_height": 90,
+        "badge_icon": "✨",
+        "badge_text": "New: AI-Powered Booking",
+        "title": "Turn Every Inquiry Into a [highlight]Confirmed Booking[/highlight]",
+        "subtitle": "Appointly helps service businesses automate reservations with beautiful, easy-to-use booking websites. Launch in days, not months.",
+        "primary_cta_text": "Get Started Free",
+        "primary_cta_link": "/pages/contact",
+        "secondary_cta_text": "See How It Works",
+        "secondary_cta_link": "#features",
+        "show_trust_indicators": true,
+        "trust_1": "4.9/5 Rating",
+        "trust_2": "No Credit Card Required",
+        "trust_3": "Bank-Level Security",
+        "show_floating_cards": true,
+        "show_scroll_indicator": true
+      }
+    },
+    "logo_cloud": {
+      "type": "logo-cloud",
+      "blocks": {
+        "logo-1": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Company 1"
+          }
+        },
+        "logo-2": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Company 2"
+          }
+        },
+        "logo-3": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Company 3"
+          }
+        },
+        "logo-4": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Company 4"
+          }
+        },
+        "logo-5": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Company 5"
+          }
+        },
+        "logo-6": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Company 6"
+          }
+        }
+      },
+      "block_order": [
+        "logo-1",
+        "logo-2",
+        "logo-3",
+        "logo-4",
+        "logo-5",
+        "logo-6"
+      ],
+      "settings": {
+        "title": "Trusted by 50+ businesses across Europe"
+      }
+    },
+    "features": {
+      "type": "features-grid",
+      "blocks": {
+        "feature-1": {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "📅",
+            "title": "Smart Scheduling",
+            "description": "AI-powered scheduling that prevents

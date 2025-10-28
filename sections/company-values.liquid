@@ -1,0 +1,198 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - COMPANY VALUES
+  Our values/mission section
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="values-section section">
+  <div class="container">
+    
+    <div class="section-header text-center" data-aos="fade-up">
+      {% if section.settings.subtitle != blank %}
+        <span class="section-subtitle">{{ section.settings.subtitle }}</span>
+      {% endif %}
+      
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="values-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'value' %}
+          <div class="value-card" data-aos="zoom-in" data-aos-delay="{{ forloop.index | times: 100 }}" {{ block.shopify_attributes }}>
+            
+            <div class="value-card__icon">
+              {% if block.settings.icon_emoji != blank %}
+                {{ block.settings.icon_emoji }}
+              {% else %}
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="24" fill="currentColor" opacity="0.1"/>
+                  <path d="M24 16V32M16 24H32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              {% endif %}
+            </div>
+
+            <h3 class="value-card__title">{{ block.settings.title }}</h3>
+            <p class="value-card__description">{{ block.settings.description }}</p>
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .values-section {
+    background-color: var(--color-bg-primary);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .values-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .value-card {
+    text-align: center;
+    padding: var(--space-8);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2xl);
+    border: 2px solid var(--color-gray-200);
+    transition: all var(--duration-base) var(--ease-out);
+  }
+
+  .value-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .value-card__icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+    color: var(--color-primary);
+  }
+
+  .value-card__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .value-card__description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Company Values",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our Values"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What Drives Us"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Our core principles guide everything we do."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_emoji",
+          "label": "Icon (Emoji)",
+          "default": "🎯"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Customer First"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "We obsess over making our clients successful."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Company Values",
+      "blocks": [
+        {
+          "type": "value",
+          "settings": {
+            "icon_emoji": "🎯",
+            "title": "Customer First",
+            "description": "We obsess over making our clients successful."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon_emoji": "💡",
+            "title": "Innovation",
+            "description": "Always improving, always learning, always evolving."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon_emoji": "🤝",
+            "title": "Trust & Transparency",
+            "description": "Honest communication in everything we do."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon_emoji": "🚀",
+            "title": "Excellence",
+            "description": "No shortcuts. We deliver quality every time."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

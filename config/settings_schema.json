@@ -4,8 +4,8 @@
     "theme_name": "Appointly",
     "theme_version": "1.0.0",
     "theme_author": "Your Name",
-    "theme_documentation_url": "https://appointly.com/docs",
-    "theme_support_url": "https://appointly.com/support"
+    "theme_documentation_url": "https://github.com/yourname/appointly-theme",
+    "theme_support_url": "https://support.appointly.com"
   },
   {
     "name": "Colors",
@@ -18,24 +18,46 @@
         "type": "color",
         "id": "color_primary",
         "label": "Primary Color",
-        "default": "#007AFF"
+        "default": "#007AFF",
+        "info": "Used for buttons, links, and accents"
       },
       {
         "type": "color",
         "id": "color_secondary",
         "label": "Secondary Color",
-        "default": "#34C759"
+        "default": "#34C759",
+        "info": "Used for success states and secondary buttons"
+      },
+      {
+        "type": "header",
+        "content": "Text Colors"
       },
       {
         "type": "color",
-        "id": "color_text",
-        "label": "Text Color",
-        "default": "#000000"
+        "id": "color_text_primary",
+        "label": "Primary Text",
+        "default": "#1C1C1E"
+      },
+      {
+        "type": "color",
+        "id": "color_text_secondary",
+        "label": "Secondary Text",
+        "default": "#3A3A3C"
+      },
+      {
+        "type": "header",
+        "content": "Background Colors"
       },
       {
         "type": "color",
         "id": "color_background",
-        "label": "Background Color",
+        "label": "Background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_background_secondary",
+        "label": "Secondary Background",
         "default": "#F2F2F7"
       }
     ]
@@ -45,19 +67,31 @@
     "settings": [
       {
         "type": "header",
-        "content": "Fonts"
+        "content": "Font Settings"
       },
       {
         "type": "font_picker",
         "id": "font_heading",
         "label": "Heading Font",
-        "default": "assistant_n4"
+        "default": "assistant_n4",
+        "info": "Used for titles and headings"
       },
       {
         "type": "font_picker",
         "id": "font_body",
         "label": "Body Font",
-        "default": "assistant_n4"
+        "default": "assistant_n4",
+        "info": "Used for body text and paragraphs"
+      },
+      {
+        "type": "range",
+        "id": "font_size_base",
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "Base Font Size",
+        "default": 16
       }
     ]
   },
@@ -71,22 +105,178 @@
       {
         "type": "text",
         "id": "social_facebook",
-        "label": "Facebook URL"
+        "label": "Facebook URL",
+        "info": "https://facebook.com/yourpage"
       },
       {
         "type": "text",
         "id": "social_instagram",
-        "label": "Instagram URL"
-      },
-      {
-        "type": "text",
-        "id": "social_linkedin",
-        "label": "LinkedIn URL"
+        "label": "Instagram URL",
+        "info": "https://instagram.com/yourprofile"
       },
       {
         "type": "text",
         "id": "social_twitter",
-        "label": "Twitter URL"
+        "label": "Twitter URL",
+        "info": "https://twitter.com/yourhandle"
+      },
+      {
+        "type": "text",
+        "id": "social_linkedin",
+        "label": "LinkedIn URL",
+        "info": "https://linkedin.com/company/yourcompany"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube URL",
+        "info": "https://youtube.com/yourchannel"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok URL",
+        "info": "https://tiktok.com/@yourhandle"
+      }
+    ]
+  },
+  {
+    "name": "Navigation",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Configure your navigation menus in: Online Store → Navigation"
+      },
+      {
+        "type": "header",
+        "content": "Recommended Menu Structure"
+      },
+      {
+        "type": "paragraph",
+        "content": "Main Menu should include:"
+      },
+      {
+        "type": "paragraph",
+        "content": "• Home (link to /)\n• About (link to /pages/about)\n• Portfolio (link to /pages/portfolio)\n• Contact (link to /pages/contact)"
+      },
+      {
+        "type": "header",
+        "content": "Footer Menus"
+      },
+      {
+        "type": "paragraph",
+        "content": "Create menus in Navigation for footer columns:\n• Footer Menu 1 (Company links)\n• Footer Menu 2 (Resources)\n• Footer Menu 3 (Support)"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "32x32px .png or .ico file"
+      }
+    ]
+  },
+  {
+    "name": "Custom Code",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Custom CSS & JavaScript"
+      },
+      {
+        "type": "html",
+        "id": "custom_css",
+        "label": "Custom CSS",
+        "info": "Add custom CSS code here"
+      },
+      {
+        "type": "html",
+        "id": "custom_js",
+        "label": "Custom JavaScript",
+        "info": "Add custom JavaScript code here (will be added to <head>)"
+      },
+      {
+        "type": "html",
+        "id": "custom_js_footer",
+        "label": "Custom JavaScript (Footer)",
+        "info": "Add custom JavaScript code here (will be added before </body>)"
+      }
+    ]
+  },
+  {
+    "name": "Analytics",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Tracking & Analytics"
+      },
+      {
+        "type": "text",
+        "id": "google_analytics",
+        "label": "Google Analytics ID",
+        "info": "e.g., G-XXXXXXXXXX or UA-XXXXXXXXX-X"
+      },
+      {
+        "type": "text",
+        "id": "facebook_pixel",
+        "label": "Facebook Pixel ID",
+        "info": "e.g., 1234567890123456"
+      },
+      {
+        "type": "html",
+        "id": "custom_tracking",
+        "label": "Custom Tracking Code",
+        "info": "Add any other tracking codes here"
+      }
+    ]
+  },
+  {
+    "name": "Performance",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Performance Options"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_animations",
+        "label": "Enable Scroll Animations",
+        "default": true,
+        "info": "AOS (Animate On Scroll) library"
+      },
+      {
+        "type": "checkbox",
+        "id": "lazy_load_images",
+        "label": "Lazy Load Images",
+        "default": true,
+        "info": "Improves initial page load time"
+      }
+    ]
+  },
+  {
+    "name": "Accessibility",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Accessibility Features"
+      },
+      {
+        "type": "checkbox",
+        "id": "skip_to_content",
+        "label": "Show 'Skip to Content' Link",
+        "default": true,
+        "info": "Helps keyboard navigation users"
+      },
+      {
+        "type": "checkbox",
+        "id": "reduce_motion_support",
+        "label": "Respect Reduce Motion Preferences",
+        "default": true,
+        "info": "Disables animations for users with motion sensitivity"
       }
     ]
   }

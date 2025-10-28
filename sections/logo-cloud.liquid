@@ -1,0 +1,154 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - LOGO CLOUD
+  Trusted by section
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="logo-cloud section section--small">
+  <div class="container">
+    
+    {% if section.settings.title != blank %}
+      <div class="logo-cloud__header text-center" data-aos="fade-up">
+        <p class="logo-cloud__title">{{ section.settings.title }}</p>
+      </div>
+    {% endif %}
+
+    <div class="logo-cloud__grid" data-aos="fade-up" data-aos-delay="200">
+      {% for block in section.blocks %}
+        {% if block.type == 'logo' %}
+          <div class="logo-cloud__item" {{ block.shopify_attributes }}>
+            {% if block.settings.logo != blank %}
+              <img 
+                src="{{ block.settings.logo | img_url: '200x' }}" 
+                alt="{{ block.settings.company_name }}"
+                loading="lazy">
+            {% else %}
+              <div class="logo-cloud__placeholder">
+                {{ block.settings.company_name }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .section--small {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
+
+  .logo-cloud {
+    background-color: var(--color-bg-primary);
+  }
+
+  .logo-cloud__header {
+    margin-bottom: var(--space-12);
+  }
+
+  .logo-cloud__title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    margin: 0;
+  }
+
+  .logo-cloud__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .logo-cloud__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .logo-cloud__grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  .logo-cloud__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    padding: var(--space-4);
+  }
+
+  .logo-cloud__item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .logo-cloud__item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  .logo-cloud__placeholder {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-quaternary);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Logo Cloud",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Trusted by 50+ businesses"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "company_name",
+          "label": "Company Name",
+          "default": "Company"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo Cloud",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}

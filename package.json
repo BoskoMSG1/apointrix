@@ -1,0 +1,13 @@
+{
+  "name": "appointly-theme",
+  "version": "1.0.0",
+  "description": "Professional Shopify theme for booking businesses",
+  "scripts": {
+    "dev": "shopify theme dev",
+    "push": "shopify theme push",
+    "pull": "shopify theme pull"
+  },
+  "keywords": ["shopify", "theme", "booking"],
+  "author": "Your Name",
+  "license": "MIT"
+}

@@ -1,0 +1,699 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - ADVANCED HERO SECTION
+  iOS-inspired hero with animations
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section 
+  class="hero-advanced section" 
+  id="hero"
+  style="
+    --hero-bg-start: {{ section.settings.gradient_color_1 }};
+    --hero-bg-end: {{ section.settings.gradient_color_2 }};
+    --hero-height: {{ section.settings.section_height }}vh;
+  ">
+  
+  {%- comment -%} Background Elements {%- endcomment -%}
+  <div class="hero__background">
+    <div class="hero__gradient"></div>
+    {% if section.settings.show_pattern %}
+      <div class="hero__pattern"></div>
+    {% endif %}
+  </div>
+
+  <div class="container">
+    <div class="hero__wrapper">
+      
+      {%- comment -%} Hero Content (Left) {%- endcomment -%}
+      <div class="hero__content">
+        
+        {%- comment -%} Badge {%- endcomment -%}
+        {% if section.settings.badge_text != blank %}
+          <div class="hero__badge" data-aos="fade-down">
+            {% if section.settings.badge_icon != blank %}
+              <span class="hero__badge-icon">{{ section.settings.badge_icon }}</span>
+            {% endif %}
+            <span>{{ section.settings.badge_text }}</span>
+          </div>
+        {% endif %}
+
+        {%- comment -%} Headline {%- endcomment -%}
+        <h1 class="hero__title" data-aos="fade-up" data-aos-delay="100">
+          {% assign title_parts = section.settings.title | split: '[highlight]' %}
+          {% if title_parts.size > 1 %}
+            {{ title_parts[0] }}
+            {% assign highlight_end = title_parts[1] | split: '[/highlight]' %}
+            <span class="text-gradient">{{ highlight_end[0] }}</span>
+            {{ highlight_end[1] }}
+          {% else %}
+            {{ section.settings.title }}
+          {% endif %}
+        </h1>
+
+        {%- comment -%} Subtitle {%- endcomment -%}
+        {% if section.settings.subtitle != blank %}
+          <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="200">
+            {{ section.settings.subtitle }}
+          </p>
+        {% endif %}
+
+        {%- comment -%} CTA Buttons {%- endcomment -%}
+        <div class="hero__cta" data-aos="fade-up" data-aos-delay="300">
+          {% if section.settings.primary_cta_text != blank %}
+            <a href="{{ section.settings.primary_cta_link }}" class="btn btn--primary btn--large">
+              {{ section.settings.primary_cta_text }}
+              <svg class="btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          {% endif %}
+
+          {% if section.settings.secondary_cta_text != blank %}
+            <a href="{{ section.settings.secondary_cta_link }}" class="btn btn--outline btn--large">
+              {{ section.settings.secondary_cta_text }}
+            </a>
+          {% endif %}
+        </div>
+
+        {%- comment -%} Trust Indicators {%- endcomment -%}
+        {% if section.settings.show_trust_indicators %}
+          <div class="hero__trust" data-aos="fade-up" data-aos-delay="400">
+            <div class="trust-item">
+              <span class="trust-item__icon">⭐</span>
+              <span class="trust-item__text">{{ section.settings.trust_1 }}</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-item__icon">✓</span>
+              <span class="trust-item__text">{{ section.settings.trust_2 }}</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-item__icon">🔒</span>
+              <span class="trust-item__text">{{ section.settings.trust_3 }}</span>
+            </div>
+          </div>
+        {% endif %}
+
+        {%- comment -%} Statistics {%- endcomment -%}
+        {% if section.blocks.size > 0 %}
+          <div class="hero__stats" data-aos="fade-up" data-aos-delay="500">
+            {% for block in section.blocks %}
+              {% if block.type == 'statistic' %}
+                <div class="stat-card" {{ block.shopify_attributes }}>
+                  <div class="stat-card__number" data-count-up="{{ block.settings.number }}">
+                    0
+                  </div>
+                  <div class="stat-card__suffix">{{ block.settings.suffix }}</div>
+                  <div class="stat-card__label">{{ block.settings.label }}</div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+      </div>
+
+      {%- comment -%} Hero Visual (Right) {%- endcomment -%}
+      <div class="hero__visual" data-aos="fade-left" data-aos-delay="400">
+        <div class="hero__image-wrapper">
+          {% if section.settings.hero_image != blank %}
+            <img 
+              src="{{ section.settings.hero_image | img_url: 'master' }}"
+              srcset="{{ section.settings.hero_image | img_url: '600x' }} 600w,
+                      {{ section.settings.hero_image | img_url: '900x' }} 900w,
+                      {{ section.settings.hero_image | img_url: '1200x' }} 1200w"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt="{{ section.settings.hero_image.alt | default: section.settings.title }}"
+              class="hero__image"
+              loading="eager">
+          {% else %}
+            <div class="hero__placeholder">
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+
+          {%- comment -%} Floating Notification Cards {%- endcomment -%}
+          {% if section.settings.show_floating_cards %}
+            <div class="floating-card floating-card--1" data-aos="zoom-in" data-aos-delay="800">
+              <div class="floating-card__icon">✅</div>
+              <div class="floating-card__content">
+                <div class="floating-card__title">Booking Confirmed</div>
+                <div class="floating-card__time">Just now</div>
+              </div>
+            </div>
+
+            <div class="floating-card floating-card--2" data-aos="zoom-in" data-aos-delay="1000">
+              <div class="floating-card__icon">📅</div>
+              <div class="floating-card__content">
+                <div class="floating-card__title">New Appointment</div>
+                <div class="floating-card__time">2 min ago</div>
+              </div>
+            </div>
+
+            <div class="floating-card floating-card--3" data-aos="zoom-in" data-aos-delay="1200">
+              <div class="floating-card__icon">💳</div>
+              <div class="floating-card__content">
+                <div class="floating-card__title">Payment Received</div>
+                <div class="floating-card__time">5 min ago</div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {%- comment -%} Scroll Indicator {%- endcomment -%}
+  {% if section.settings.show_scroll_indicator %}
+    <div class="hero__scroll-indicator" data-aos="fade-up" data-aos-delay="1500">
+      <div class="scroll-indicator">
+        <div class="scroll-indicator__mouse">
+          <div class="scroll-indicator__wheel"></div>
+        </div>
+        <span class="scroll-indicator__text">Scroll to explore</span>
+      </div>
+    </div>
+  {% endif %}
+
+</section>
+
+<style>
+  /* ==========================================
+     HERO ADVANCED STYLES
+     ========================================== */
+
+  .hero-advanced {
+    position: relative;
+    min-height: var(--hero-height);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+  }
+
+  /* Background */
+  .hero__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
+  }
+
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    opacity: 0.5;
+  }
+
+  /* Layout */
+  .hero__wrapper {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero__wrapper {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+    }
+  }
+
+  /* Content */
+  .hero__content {
+    color: white;
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-6);
+    color: white;
+  }
+
+  .hero__subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    opacity: 0.95;
+    margin-bottom: var(--space-8);
+    max-width: 600px;
+    color: white;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+
+  /* Trust Indicators */
+  .hero__trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+  }
+
+  /* Statistics */
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--space-8);
+  }
+
+  .stat-card {
+    text-align: left;
+  }
+
+  .stat-card__number {
+    display: flex;
+    align-items: baseline;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+  }
+
+  .stat-card__suffix {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin-left: var(--space-1);
+  }
+
+  .stat-card__label {
+    font-size: var(--font-size-sm);
+    opacity: 0.8;
+    margin-top: var(--space-2);
+  }
+
+  /* Visual */
+  .hero__image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero__image,
+  .hero__placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.3));
+  }
+
+  /* Floating Cards */
+  .floating-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .floating-card--1 {
+    top: 10%;
+    right: -5%;
+    animation-delay: 0s;
+  }
+
+  .floating-card--2 {
+    bottom: 30%;
+    left: -5%;
+    animation-delay: 1s;
+  }
+
+  .floating-card--3 {
+    bottom: 10%;
+    right: 15%;
+    animation-delay: 2s;
+  }
+
+  .floating-card__icon {
+    font-size: var(--font-size-2xl);
+    flex-shrink: 0;
+  }
+
+  .floating-card__content {
+    flex: 1;
+  }
+
+  .floating-card__title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .floating-card__time {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  /* Scroll Indicator */
+  .hero__scroll-indicator {
+    position: absolute;
+    bottom: var(--space-8);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  .scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    color: white;
+    opacity: 0.8;
+  }
+
+  .scroll-indicator__mouse {
+    width: 24px;
+    height: 40px;
+    border: 2px solid currentColor;
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .scroll-indicator__wheel {
+    width: 4px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      top: 8px;
+      opacity: 1;
+    }
+    100% {
+      top: 24px;
+      opacity: 0;
+    }
+  }
+
+  .scroll-indicator__text {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .hero-advanced {
+      min-height: auto;
+      padding-top: var(--space-16);
+      padding-bottom: var(--space-16);
+    }
+
+    .hero__content {
+      text-align: center;
+    }
+
+    .hero__cta {
+      justify-content: center;
+    }
+
+    .hero__trust {
+      justify-content: center;
+    }
+
+    .hero__stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-card {
+      text-align: center;
+    }
+
+    .floating-card {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Advanced",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Gradient Start Color",
+      "default": "#007AFF"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Gradient End Color",
+      "default": "#5856D6"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pattern",
+      "label": "Show Pattern Overlay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section Height (vh)",
+      "min": 60,
+      "max": 100,
+      "step": 5,
+      "default": 90
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_icon",
+      "label": "Badge Icon (emoji)",
+      "default": "✨"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "New: AI-Powered Booking"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Headline",
+      "info": "Use [highlight]text[/highlight] for gradient text",
+      "default": "Turn Every Inquiry Into a [highlight]Confirmed Booking[/highlight]"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Appointly helps service businesses automate reservations with beautiful, easy-to-use booking websites. Launch in days, not months."
+    },
+    {
+      "type": "header",
+      "content": "CTA Buttons"
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "Primary Button Text",
+      "default": "Get Started Free"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Secondary Button Text",
+      "default": "See How It Works"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Trust Indicators"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_indicators",
+      "label": "Show Trust Indicators",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust Item 1",
+      "default": "4.9/5 Rating"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust Item 2",
+      "default": "No Credit Card Required"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust Item 3",
+      "default": "Bank-Level Security"
+    },
+    {
+      "type": "header",
+      "content": "Hero Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_floating_cards",
+      "label": "Show Floating Notification Cards",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Other Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll_indicator",
+      "label": "Show Scroll Indicator",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "statistic",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "50"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix",
+          "default": "+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Active Clients"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Advanced",
+      "blocks": [
+        {
+          "type": "statistic",
+          "settings": {
+            "number": "50",
+            "suffix": "+",
+            "label": "Active Clients"
+          }
+        },
+        {
+          "type": "statistic",
+          "settings": {
+            "number": "10",
+            "suffix": "k+",
+            "label": "Bookings/Month"
+          }
+        },
+        {
+          "type": "statistic",
+          "settings": {
+            "number": "99",
+            "suffix": "%",
+            "label": "Uptime"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

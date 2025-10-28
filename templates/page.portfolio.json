@@ -1,17 +1,311 @@
 {
   "sections": {
-    "portfolio": {
+    "portfolio_hero": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "portfolio_grid": {
       "type": "portfolio-grid",
+      "blocks": {
+        "category_restaurants": {
+          "type": "category",
+          "settings": {
+            "name": "Restaurants",
+            "slug": "restaurants"
+          }
+        },
+        "category_salons": {
+          "type": "category",
+          "settings": {
+            "name": "Salons & Spas",
+            "slug": "salons"
+          }
+        },
+        "category_fitness": {
+          "type": "category",
+          "settings": {
+            "name": "Fitness",
+            "slug": "fitness"
+          }
+        },
+        "category_medical": {
+          "type": "category",
+          "settings": {
+            "name": "Medical",
+            "slug": "medical"
+          }
+        },
+        "project_1": {
+          "type": "project",
+          "settings": {
+            "client": "Lumière Restaurant",
+            "title": "Modern Booking Website",
+            "description": "A beautiful reservation system that increased bookings by 45% in the first month. Custom design with French bistro aesthetic.",
+            "category": "restaurants",
+            "tags": "Booking, Restaurant, French Cuisine, Premium",
+            "project_url": ""
+          }
+        },
+        "project_2": {
+          "type": "project",
+          "settings": {
+            "client": "Glow Spa & Wellness",
+            "title": "Spa Reservation Platform",
+            "description": "Automated appointment scheduling with SMS reminders reduced no-shows by 30%. Integrated with payment processing.",
+            "category": "salons",
+            "tags": "Spa, Wellness, Automation, SMS",
+            "project_url": ""
+          }
+        },
+        "project_3": {
+          "type": "project",
+          "settings": {
+            "client": "Apex Fitness Studio",
+            "title": "Class Booking System",
+            "description": "Real-time class scheduling with capacity management and payment integration. Mobile-first design for on-the-go bookings.",
+            "category": "fitness",
+            "tags": "Fitness, Classes, Payments, Mobile",
+            "project_url": ""
+          }
+        },
+        "project_4": {
+          "type": "project",
+          "settings": {
+            "client": "Central Dental Clinic",
+            "title": "Patient Portal & Booking",
+            "description": "Secure online booking with patient management system. HIPAA compliant with encrypted data storage.",
+            "category": "medical",
+            "tags": "Healthcare, HIPAA, Secure, Portal",
+            "project_url": ""
+          }
+        },
+        "project_5": {
+          "type": "project",
+          "settings": {
+            "client": "Bella Vista Wine Bar",
+            "title": "Wine Bar Reservations",
+            "description": "Elegant booking experience with wine pairing suggestions and VIP table management. Sommelier chat integration.",
+            "category": "restaurants",
+            "tags": "Wine Bar, Premium, Experience, VIP",
+            "project_url": ""
+          }
+        },
+        "project_6": {
+          "type": "project",
+          "settings": {
+            "client": "Elite Cuts Barbershop",
+            "title": "Barbershop Booking App",
+            "description": "Modern booking system with stylist selection and service customization. Loyalty program integration included.",
+            "category": "salons",
+            "tags": "Barbershop, Grooming, Stylists, Loyalty",
+            "project_url": ""
+          }
+        },
+        "project_7": {
+          "type": "project",
+          "settings": {
+            "client": "Yoga Flow Studio",
+            "title": "Yoga Class Scheduler",
+            "description": "Beautiful, zen-inspired booking interface for yoga and meditation classes. Membership management included.",
+            "category": "fitness",
+            "tags": "Yoga, Meditation, Wellness, Classes",
+            "project_url": ""
+          }
+        },
+        "project_8": {
+          "type": "project",
+          "settings": {
+            "client": "Smile Orthodontics",
+            "title": "Orthodontist Appointment System",
+            "description": "Family-friendly booking platform with treatment tracking and appointment reminders. Insurance integration.",
+            "category": "medical",
+            "tags": "Orthodontics, Family, Insurance, Tracking",
+            "project_url": ""
+          }
+        },
+        "project_9": {
+          "type": "project",
+          "settings": {
+            "client": "Trattoria Napoli",
+            "title": "Italian Restaurant Bookings",
+            "description": "Traditional Italian restaurant with modern booking system. Table management with floor plan visualization.",
+            "category": "restaurants",
+            "tags": "Italian, Traditional, Table Management",
+            "project_url": ""
+          }
+        },
+        "project_10": {
+          "type": "project",
+          "settings": {
+            "client": "Pure Beauty Salon",
+            "title": "Multi-Service Salon Platform",
+            "description": "Comprehensive booking system for hair, nails, makeup services. Staff scheduling with skill-based assignment.",
+            "category": "salons",
+            "tags": "Beauty, Multi-Service, Staff Management",
+            "project_url": ""
+          }
+        },
+        "project_11": {
+          "type": "project",
+          "settings": {
+            "client": "CrossFit Revolution",
+            "title": "CrossFit Box Booking System",
+            "description": "High-performance booking system for WOD classes with athlete profiles and progress tracking.",
+            "category": "fitness",
+            "tags": "CrossFit, WOD, Performance, Tracking",
+            "project_url": ""
+          }
+        },
+        "project_12": {
+          "type": "project",
+          "settings": {
+            "client": "Vision Eye Care",
+            "title": "Optometry Booking Portal",
+            "description": "Professional eye care booking with vision insurance verification and frame selection preview.",
+            "category": "medical",
+            "tags": "Optometry, Vision, Insurance, Preview",
+            "project_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_restaurants",
+        "category_salons",
+        "category_fitness",
+        "category_medical",
+        "project_1",
+        "project_2",
+        "project_3",
+        "project_4",
+        "project_5",
+        "project_6",
+        "project_7",
+        "project_8",
+        "project_9",
+        "project_10",
+        "project_11",
+        "project_12"
+      ],
       "settings": {
         "subtitle": "Our Work",
         "title": "Recent Projects",
-        "description": "Explore our portfolio of successful booking websites we've created for clients across Europe.",
+        "description": "Explore our portfolio of successful booking websites we've created for clients across Europe. From restaurants to medical clinics, we've helped businesses of all sizes streamline their reservation process.",
         "show_filters": true,
-        "cta_subtext": "Ready to get started?",
+        "cta_subtext": "Ready to get your own booking website?",
         "cta_text": "Start Your Project",
         "cta_link": "/pages/contact"
       }
+    },
+    "stats_portfolio": {
+      "type": "stats-counter",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "🎨",
+            "number": "50",
+            "suffix": "+",
+            "label": "Projects Completed"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "😊",
+            "number": "500",
+            "suffix": "+",
+            "label": "Happy Clients"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "⭐",
+            "number": "4",
+            "suffix": ".9",
+            "label": "Average Rating"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "🌍",
+            "number": "12",
+            "suffix": "+",
+            "label": "Countries Served"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
+      "settings": {
+        "title": "Trusted by Businesses Across Europe",
+        "subtitle": "Our track record speaks for itself"
+      }
+    },
+    "testimonials_portfolio": {
+      "type": "testimonials-carousel",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The Appointly team delivered exactly what we needed. Our new booking website is beautiful, fast, and our customers love it!",
+            "author_name": "Jean-Pierre Dubois",
+            "author_role": "Owner",
+            "company": "Lumière Restaurant",
+            "result_metric": "+45%",
+            "result_label": "More bookings"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Professional, responsive, and incredibly talented. They understood our brand and created something truly special.",
+            "author_name": "Sarah Johnson",
+            "author_role": "Manager",
+            "company": "Glow Spa",
+            "result_metric": "5★",
+            "result_label": "Client rating"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2"
+      ],
+      "settings": {
+        "subtitle": "Client Feedback",
+        "title": "What Our Clients Say",
+        "description": "Real testimonials from real businesses we've helped grow.",
+        "autoplay": true,
+        "autoplay_speed": 6
+      }
+    },
+    "cta_portfolio": {
+      "type": "cta-final",
+      "settings": {
+        "gradient_start": "#667eea",
+        "gradient_end": "#764ba2",
+        "badge_text": "🎨 Custom Design",
+        "title": "Let's Create Your Booking Website",
+        "subtitle": "Every project is unique. Let's discuss your vision and create something amazing together.",
+        "primary_cta_text": "Start Your Project",
+        "primary_cta_link": "/pages/contact",
+        "secondary_cta_text": "View Pricing",
+        "secondary_cta_link": "/#pricing",
+        "subtext": "💼 Free consultation • 🎨 Custom design • 🚀 Fast delivery"
+      }
     }
   },
-  "order": ["portfolio"]
+  "order": [
+    "portfolio_hero",
+    "portfolio_grid",
+    "stats_portfolio",
+    "testimonials_portfolio",
+    "cta_portfolio"
+  ]
 }

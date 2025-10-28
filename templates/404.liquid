@@ -1,0 +1,471 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#007AFF">
+  
+  <title>Page Not Found - {{ shop.name }}</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Theme Styles -->
+  {{ 'appointly-reset.css' | asset_url | stylesheet_tag }}
+  {{ 'appointly-variables.css' | asset_url | stylesheet_tag }}
+  {{ 'appointly-global.css' | asset_url | stylesheet_tag }}
+  {{ 'appointly-components.css' | asset_url | stylesheet_tag }}
+  {{ 'appointly-utilities.css' | asset_url | stylesheet_tag }}
+
+  {{ content_for_header }}
+
+  <style>
+    /* ==========================================
+       ELEGANT iOS 26 404 PAGE
+       ========================================== */
+    
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-8);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    /* Animated Background Orbs */
+    .error-page::before,
+    .error-page::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .error-page::before {
+      width: 400px;
+      height: 400px;
+      background: rgba(102, 126, 234, 0.6);
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .error-page::after {
+      width: 500px;
+      height: 500px;
+      background: rgba(118, 75, 162, 0.6);
+      bottom: -150px;
+      right: -150px;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(30px, -30px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+    }
+
+    /* Glass Card */
+    .error-card {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      width: 100%;
+      padding: var(--space-12) var(--space-10);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-radius: var(--radius-3xl);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+      text-align: center;
+      animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* 404 Number */
+    .error-code {
+      font-size: clamp(5rem, 15vw, 8rem);
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-4);
+      letter-spacing: -0.05em;
+      animation: glitch 3s infinite;
+    }
+
+    @keyframes glitch {
+      0%, 90%, 100% {
+        transform: translate(0);
+      }
+      92% {
+        transform: translate(-2px, 2px);
+      }
+      94% {
+        transform: translate(2px, -2px);
+      }
+      96% {
+        transform: translate(-2px, -2px);
+      }
+      98% {
+        transform: translate(2px, 2px);
+      }
+    }
+
+    /* Icon */
+    .error-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+      border-radius: var(--radius-2xl);
+      color: #667eea;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Text */
+    .error-title {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+      letter-spacing: -0.02em;
+    }
+
+    .error-message {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-secondary);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--space-8);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Search Form */
+    .error-search {
+      margin-bottom: var(--space-8);
+    }
+
+    .search-wrapper {
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: var(--space-4) var(--space-6);
+      padding-right: var(--space-16);
+      font-size: var(--font-size-base);
+      color: var(--color-text-primary);
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px solid rgba(102, 126, 234, 0.2);
+      border-radius: var(--radius-full);
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .search-input:focus {
+      outline: none;
+      background: #ffffff;
+      border-color: #667eea;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+
+    .search-button {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .search-button:hover {
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .search-button:active {
+      transform: translateY(-50%) scale(0.98);
+    }
+
+    /* Buttons */
+    .error-actions {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .error-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-8);
+      font-size: var(--font-size-base);
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius-full);
+      transition: all var(--duration-base) cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .error-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity var(--duration-fast);
+    }
+
+    .error-btn:hover::before {
+      opacity: 1;
+    }
+
+    .error-btn--primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .error-btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .error-btn--secondary {
+      background: rgba(102, 126, 234, 0.1);
+      color: #667eea;
+      border: 2px solid rgba(102, 126, 234, 0.2);
+    }
+
+    .error-btn--secondary:hover {
+      background: rgba(102, 126, 234, 0.15);
+      border-color: #667eea;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 640px) {
+      .error-card {
+        padding: var(--space-8) var(--space-6);
+      }
+
+      .error-code {
+        font-size: 5rem;
+      }
+
+      .error-actions {
+        flex-direction: column;
+      }
+
+      .error-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation: float-particle linear infinite;
+    }
+
+    @keyframes float-particle {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  
+  <div class="error-page">
+    
+    <!-- Floating Particles -->
+    <div class="particle" style="left: 10%; animation-duration: 15s; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 30%; animation-duration: 20s; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 50%; animation-duration: 18s; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 70%; animation-duration: 22s; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 90%; animation-duration: 17s; animation-delay: 3s;"></div>
+
+    <div class="error-card">
+      
+      <!-- Icon -->
+      <div class="error-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10" stroke-width="2"/>
+          <path d="M12 8v4M12 16h.01" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- 404 Number -->
+      <div class="error-code">404</div>
+
+      <!-- Text -->
+      <h1 class="error-title">Page Not Found</h1>
+      <p class="error-message">
+        The page you're looking for doesn't exist or has been moved. 
+        Let's help you find what you need.
+      </p>
+
+      <!-- Search Form -->
+      <div class="error-search">
+        <form action="/search" method="get" class="search-wrapper">
+          <input 
+            type="search" 
+            name="q" 
+            class="search-input"
+            placeholder="Search our site..."
+            autocomplete="off">
+          <button type="submit" class="search-button" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="11" cy="11" r="8" stroke-width="2"/>
+              <path d="M21 21l-4.35-4.35" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="error-actions">
+        <a href="{{ routes.root_url }}" class="error-btn error-btn--primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke-width="2"/>
+            <path d="M9 22V12h6v10" stroke-width="2"/>
+          </svg>
+          Go Home
+        </a>
+        
+        <a href="javascript:history.back()" class="error-btn error-btn--secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Go Back
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Add smooth animations on load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Focus search input for better UX
+      const searchInput = document.querySelector('.search-input');
+      if (searchInput) {
+        setTimeout(() => searchInput.focus(), 500);
+      }
+
+      // Add ripple effect to buttons
+      document.querySelectorAll('.error-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+          const ripple = document.createElement('span');
+          ripple.style.cssText = `
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            width: 100px;
+            height: 100px;
+            margin-left: -50px;
+            margin-top: -50px;
+            animation: ripple 0.6s;
+            pointer-events: none;
+          `;
+          ripple.style.left = e.clientX - this.getBoundingClientRect().left + 'px';
+          ripple.style.top = e.clientY - this.getBoundingClientRect().top + 'px';
+          this.appendChild(ripple);
+          setTimeout(() => ripple.remove(), 600);
+        });
+      });
+    });
+
+    // Add ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        from {
+          opacity: 1;
+          transform: scale(0);
+        }
+        to {
+          opacity: 0;
+          transform: scale(4);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+</body>
+</html>

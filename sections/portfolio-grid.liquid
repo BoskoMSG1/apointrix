@@ -1,0 +1,566 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - PORTFOLIO GRID
+  Project showcase with filters
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="portfolio-section section">
+  <div class="container">
+    
+    {%- comment -%} Section Header {%- endcomment -%}
+    <div class="section-header text-center" data-aos="fade-up">
+      {% if section.settings.subtitle != blank %}
+        <span class="section-subtitle">{{ section.settings.subtitle }}</span>
+      {% endif %}
+      
+      <h1 class="section-title">{{ section.settings.title }}</h1>
+      
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    {%- comment -%} Filter Buttons {%- endcomment -%}
+    {% if section.settings.show_filters %}
+      <div class="portfolio-filters" data-aos="fade-up" data-aos-delay="100">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        {% for block in section.blocks %}
+          {% if block.type == 'category' %}
+            <button class="filter-btn" data-filter="{{ block.settings.slug }}" {{ block.shopify_attributes }}>
+              {{ block.settings.name }}
+            </button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {%- comment -%} Portfolio Grid {%- endcomment -%}
+    <div class="portfolio-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'project' %}
+          <div 
+            class="portfolio-item" 
+            data-category="{{ block.settings.category }}"
+            data-aos="fade-up" 
+            data-aos-delay="{{ forloop.index | times: 50 | modulo: 300 }}"
+            {{ block.shopify_attributes }}>
+            
+            <div class="portfolio-item__image">
+              {% if block.settings.image != blank %}
+                <img 
+                  src="{{ block.settings.image | img_url: '800x' }}"
+                  srcset="{{ block.settings.image | img_url: '400x' }} 400w,
+                          {{ block.settings.image | img_url: '800x' }} 800w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  alt="{{ block.settings.title }}"
+                  loading="lazy">
+              {% else %}
+                <div class="portfolio-item__placeholder">
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              {% endif %}
+
+              {%- comment -%} Overlay {%- endcomment -%}
+              <div class="portfolio-item__overlay">
+                {% if block.settings.project_url != blank %}
+                  <a href="{{ block.settings.project_url }}" class="portfolio-item__link" target="_blank" rel="noopener">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M10 6H6C4.89543 6 4 6.89543 4 8V18C4 19.1046 4.89543 20 6 20H16C17.1046 20 18 19.1046 18 18V14M14 4H20M20 4V10M20 4L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="portfolio-item__content">
+              {% if block.settings.client != blank %}
+                <div class="portfolio-item__client">{{ block.settings.client }}</div>
+              {% endif %}
+              
+              <h3 class="portfolio-item__title">{{ block.settings.title }}</h3>
+              
+              {% if block.settings.description != blank %}
+                <p class="portfolio-item__description">{{ block.settings.description }}</p>
+              {% endif %}
+
+              {%- comment -%} Tags {%- endcomment -%}
+              {% if block.settings.tags != blank %}
+                <div class="portfolio-item__tags">
+                  {% assign tags = block.settings.tags | split: ',' %}
+                  {% for tag in tags %}
+                    <span class="portfolio-tag">{{ tag | strip }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {%- comment -%} CTA {%- endcomment -%}
+    {% if section.settings.cta_text != blank %}
+      <div class="portfolio-cta text-center" data-aos="fade-up">
+        <p class="portfolio-cta__text">{{ section.settings.cta_subtext }}</p>
+        <a href="{{ section.settings.cta_link }}" class="btn btn--primary btn--large">
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  .portfolio-section {
+    background-color: var(--color-bg-primary);
+  }
+
+  /* Filters */
+  .portfolio-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-16);
+  }
+
+  .filter-btn {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg-secondary);
+    border: 2px solid transparent;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .filter-btn:hover {
+    color: var(--color-primary);
+    background-color: rgba(0, 122, 255, 0.1);
+  }
+
+  .filter-btn.active {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  /* Portfolio Grid */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .portfolio-item {
+    background-color: var(--color-white);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    border: 1px solid var(--color-gray-200);
+    transition: all var(--duration-base) var(--ease-out);
+  }
+
+  .portfolio-item.hidden {
+    display: none;
+  }
+
+  .portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-2xl);
+    border-color: var(--color-primary);
+  }
+
+  /* Image */
+  .portfolio-item__image {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-gray-100);
+  }
+
+  .portfolio-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .portfolio-item:hover .portfolio-item__image img {
+    transform: scale(1.05);
+  }
+
+  .portfolio-item__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-secondary);
+  }
+
+  .placeholder-svg {
+    width: 40%;
+    height: auto;
+    opacity: 0.3;
+  }
+
+  /* Overlay */
+  .portfolio-item__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 122, 255, 0.9) 0%, rgba(88, 86, 214, 0.9) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease-out);
+  }
+
+  .portfolio-item:hover .portfolio-item__overlay {
+    opacity: 1;
+  }
+
+  .portfolio-item__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-radius: var(--radius-full);
+    transform: scale(0.8);
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .portfolio-item:hover .portfolio-item__link {
+    transform: scale(1);
+  }
+
+  /* Content */
+  .portfolio-item__content {
+    padding: var(--space-6);
+  }
+
+  .portfolio-item__client {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    margin-bottom: var(--space-2);
+  }
+
+  .portfolio-item__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .portfolio-item__description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Tags */
+  .portfolio-item__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .portfolio-tag {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-tertiary);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+  }
+
+  /* CTA */
+  .portfolio-cta {
+    margin-top: var(--space-20);
+  }
+
+  .portfolio-cta__text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+</style>
+
+<script>
+  // Portfolio filter functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+
+        // Filter items
+        portfolioItems.forEach(item => {
+          const category = item.getAttribute('data-category');
+          
+          if (filter === 'all' || category === filter) {
+            item.classList.remove('hidden');
+            item.style.display = 'block';
+          } else {
+            item.classList.add('hidden');
+            // Use setTimeout for smooth transition
+            setTimeout(() => {
+              if (item.classList.contains('hidden')) {
+                item.style.display = 'none';
+              }
+            }, 300);
+          }
+        });
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Portfolio Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our Work"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Recent Projects"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Explore our portfolio of successful booking websites we've created for clients across Europe."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show Category Filters",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_subtext",
+      "label": "CTA Subtext",
+      "default": "Ready to get started?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Start Your Project"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Category Name",
+          "default": "Restaurants"
+        },
+        {
+          "type": "text",
+          "id": "slug",
+          "label": "Category Slug",
+          "info": "Use lowercase, no spaces (e.g., restaurants)",
+          "default": "restaurants"
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "name": "Project",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Project Image"
+        },
+        {
+          "type": "text",
+          "id": "client",
+          "label": "Client Name",
+          "default": "Lumière Restaurant"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Project Title",
+          "default": "Modern Booking Website"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "A beautiful reservation system that increased bookings by 45% in the first month."
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category Slug",
+          "info": "Must match category filter slug",
+          "default": "restaurants"
+        },
+        {
+          "type": "text",
+          "id": "tags",
+          "label": "Tags (comma-separated)",
+          "default": "Booking, Restaurant, Custom Design",
+          "info": "e.g., Booking, Restaurant, Custom Design"
+        },
+        {
+          "type": "url",
+          "id": "project_url",
+          "label": "Project URL (Optional)",
+          "info": "Link to live website"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio Grid",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "name": "Restaurants",
+            "slug": "restaurants"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "name": "Salons & Spas",
+            "slug": "salons"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "name": "Fitness",
+            "slug": "fitness"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "name": "Medical",
+            "slug": "medical"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "client": "Lumière Restaurant",
+            "title": "Modern Booking Website",
+            "description": "A beautiful reservation system that increased bookings by 45%.",
+            "category": "restaurants",
+            "tags": "Booking, Restaurant, French Cuisine"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "client": "Glow Spa",
+            "title": "Spa Reservation Platform",
+            "description": "Automated appointment scheduling with SMS reminders.",
+            "category": "salons",
+            "tags": "Spa, Wellness, Automation"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "client": "Apex Fitness",
+            "title": "Class Booking System",
+            "description": "Real-time class scheduling and payment integration.",
+            "category": "fitness",
+            "tags": "Fitness, Classes, Payments"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "client": "Dental Clinic",
+            "title": "Patient Portal",
+            "description": "Secure online booking with patient management.",
+            "category": "medical",
+            "tags": "Healthcare, HIPAA, Secure"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "client": "Bella Vista",
+            "title": "Wine Bar Reservations",
+            "description": "Elegant booking experience with wine pairing suggestions.",
+            "category": "restaurants",
+            "tags": "Wine Bar, Premium, Experience"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "client": "Elite Cuts",
+            "title": "Barbershop Bookings",
+            "description": "Modern booking system with stylist selection.",
+            "category": "salons",
+            "tags": "Barbershop, Grooming, Stylists"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

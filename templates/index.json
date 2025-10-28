@@ -1,0 +1,571 @@
+{
+  "sections": {
+    "hero_advanced": {
+      "type": "hero-advanced",
+      "blocks": {
+        "stat_1": {
+          "type": "statistic",
+          "settings": {
+            "number": "500",
+            "suffix": "+",
+            "label": "Happy Clients"
+          }
+        },
+        "stat_2": {
+          "type": "statistic",
+          "settings": {
+            "number": "50",
+            "suffix": "k+",
+            "label": "Bookings Monthly"
+          }
+        },
+        "stat_3": {
+          "type": "statistic",
+          "settings": {
+            "number": "99",
+            "suffix": "%",
+            "label": "Satisfaction Rate"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3"
+      ],
+      "settings": {
+        "gradient_color_1": "#667eea",
+        "gradient_color_2": "#764ba2",
+        "show_pattern": true,
+        "section_height": 90,
+        "badge_icon": "✨",
+        "badge_text": "New: AI-Powered Scheduling",
+        "title": "Transform Your Business With [highlight]Smart Booking[/highlight]",
+        "subtitle": "Appointly helps service businesses automate reservations with beautiful, easy-to-use booking websites. Launch in days, not months.",
+        "primary_cta_text": "Get Started Free",
+        "primary_cta_link": "/pages/contact",
+        "secondary_cta_text": "See How It Works",
+        "secondary_cta_link": "#features",
+        "show_trust_indicators": true,
+        "trust_1": "⭐ 4.9/5 Rating",
+        "trust_2": "✓ No Credit Card Required",
+        "trust_3": "🔒 Bank-Level Security",
+        "show_floating_cards": true,
+        "show_scroll_indicator": true
+      }
+    },
+    "logo_cloud": {
+      "type": "logo-cloud",
+      "blocks": {
+        "logo_1": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Restaurant Pro"
+          }
+        },
+        "logo_2": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Spa Luxe"
+          }
+        },
+        "logo_3": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Fitness Studio"
+          }
+        },
+        "logo_4": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Medical Clinic"
+          }
+        },
+        "logo_5": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Beauty Salon"
+          }
+        },
+        "logo_6": {
+          "type": "logo",
+          "settings": {
+            "company_name": "Wellness Center"
+          }
+        }
+      },
+      "block_order": [
+        "logo_1",
+        "logo_2",
+        "logo_3",
+        "logo_4",
+        "logo_5",
+        "logo_6"
+      ],
+      "settings": {
+        "title": "Trusted by 500+ businesses across Europe"
+      }
+    },
+    "features_grid": {
+      "type": "features-grid",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "📅",
+            "title": "Smart Scheduling",
+            "description": "AI-powered scheduling that prevents conflicts and optimizes your calendar automatically.",
+            "link_text": "Learn more",
+            "link_url": ""
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "💬",
+            "title": "Auto Communications",
+            "description": "Automated SMS and email reminders keep your customers informed and reduce no-shows by 30%.",
+            "link_text": "Learn more",
+            "link_url": ""
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "💳",
+            "title": "Secure Payments",
+            "description": "Accept payments online with bank-level security. Stripe & PayPal integration included.",
+            "link_text": "Learn more",
+            "link_url": ""
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "📊",
+            "title": "Analytics Dashboard",
+            "description": "Track bookings, revenue, and customer behavior in real-time with beautiful charts.",
+            "link_text": "Learn more",
+            "link_url": ""
+          }
+        },
+        "feature_5": {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "🔔",
+            "title": "Smart Reminders",
+            "description": "Reduce no-shows with intelligent automated reminder system via SMS and email.",
+            "link_text": "Learn more",
+            "link_url": ""
+          }
+        },
+        "feature_6": {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "🌐",
+            "title": "Multi-Channel Booking",
+            "description": "Accept bookings from website, Instagram, Facebook, WhatsApp, and Google.",
+            "link_text": "Learn more",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4",
+        "feature_5",
+        "feature_6"
+      ],
+      "settings": {
+        "subtitle": "Features",
+        "title": "Everything You Need to Manage Bookings",
+        "description": "Powerful features designed to help you save time, reduce no-shows, and grow your business.",
+        "cta_text": "See All Features",
+        "cta_link": "/pages/features"
+      }
+    },
+    "process_steps": {
+      "type": "process-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon_emoji": "💬",
+            "title": "Free Consultation",
+            "description": "We discuss your needs, preferences, and business goals in a 30-minute video call."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon_emoji": "🎨",
+            "title": "Custom Design",
+            "description": "We create a beautiful booking website tailored to your brand within 7-14 days."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon_emoji": "🚀",
+            "title": "Launch & Support",
+            "description": "We launch your site, provide training, and offer ongoing support and maintenance."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "subtitle": "How It Works",
+        "title": "Get Your Booking Website in 3 Simple Steps",
+        "description": "From consultation to launch, we make the process simple and stress-free."
+      }
+    },
+    "text_image_split": {
+      "type": "text-image-split",
+      "blocks": {
+        "feature_item_1": {
+          "type": "feature",
+          "settings": {
+            "text": "24/7 automated booking system"
+          }
+        },
+        "feature_item_2": {
+          "type": "feature",
+          "settings": {
+            "text": "SMS & email reminders"
+          }
+        },
+        "feature_item_3": {
+          "type": "feature",
+          "settings": {
+            "text": "Secure online payments"
+          }
+        },
+        "feature_item_4": {
+          "type": "feature",
+          "settings": {
+            "text": "Real-time calendar sync"
+          }
+        },
+        "feature_item_5": {
+          "type": "feature",
+          "settings": {
+            "text": "Mobile-friendly interface"
+          }
+        }
+      },
+      "block_order": [
+        "feature_item_1",
+        "feature_item_2",
+        "feature_item_3",
+        "feature_item_4",
+        "feature_item_5"
+      ],
+      "settings": {
+        "reverse": false,
+        "subtitle": "Why Choose Appointly",
+        "title": "Built for Modern Service Businesses",
+        "description": "<p>We help restaurants, salons, spas, fitness studios, and service providers streamline their booking process with beautiful, easy-to-use websites that convert visitors into confirmed appointments.</p><p>Our platform is designed specifically for European businesses, with multi-language support, GDPR compliance, and local payment methods.</p>",
+        "cta_text": "Learn More",
+        "cta_link": "/pages/about"
+      }
+    },
+    "stats_counter": {
+      "type": "stats-counter",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "👥",
+            "number": "500",
+            "suffix": "+",
+            "label": "Happy Customers"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "📅",
+            "number": "50",
+            "suffix": "k+",
+            "label": "Bookings Monthly"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "⭐",
+            "number": "4",
+            "suffix": ".9",
+            "label": "Average Rating"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "icon_emoji": "🚀",
+            "number": "99",
+            "suffix": "%",
+            "label": "Client Satisfaction"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
+      "settings": {
+        "title": "Results That Speak for Themselves",
+        "subtitle": "Join hundreds of businesses growing with Appointly"
+      }
+    },
+    "video_embed": {
+      "type": "video-embed",
+      "settings": {
+        "title": "See Appointly in Action",
+        "subtitle": "Watch how easy it is to manage bookings with our platform (2 min demo)",
+        "video_url": "",
+        "full_width": false
+      }
+    },
+    "pricing_table": {
+      "type": "pricing-table",
+      "blocks": {
+        "pricing_starter": {
+          "type": "pricing_tier",
+          "settings": {
+            "name": "Starter",
+            "tagline": "Perfect for solo practitioners",
+            "monthly_price": "600",
+            "annual_price": "480",
+            "setup_fee": "200",
+            "features": "Up to 100 bookings/month\n1 location\nEmail notifications\nMobile-responsive website\nBasic analytics\nEmail support",
+            "featured": false,
+            "badge_text": "",
+            "cta_text": "Get Started",
+            "cta_link": "/pages/contact"
+          }
+        },
+        "pricing_business": {
+          "type": "pricing_tier",
+          "settings": {
+            "name": "Business",
+            "tagline": "For growing businesses",
+            "monthly_price": "1200",
+            "annual_price": "960",
+            "setup_fee": "400",
+            "features": "Unlimited bookings\nUp to 5 locations\nSMS + Email notifications\nAdvanced analytics\nCustom branding\nOnline payments\nPriority support\nGoogle Calendar sync",
+            "featured": true,
+            "badge_text": "Most Popular",
+            "cta_text": "Get Started",
+            "cta_link": "/pages/contact"
+          }
+        },
+        "pricing_premium": {
+          "type": "pricing_tier",
+          "settings": {
+            "name": "Premium",
+            "tagline": "For enterprises",
+            "monthly_price": "2500",
+            "annual_price": "2000",
+            "setup_fee": "",
+            "features": "Everything in Business\nUnlimited locations\nWhite-label option\nAPI access\nDedicated account manager\n24/7 phone support\nCustom integrations\nAdvanced reporting",
+            "featured": false,
+            "badge_text": "",
+            "cta_text": "Contact Sales",
+            "cta_link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "pricing_starter",
+        "pricing_business",
+        "pricing_premium"
+      ],
+      "settings": {
+        "subtitle": "Pricing",
+        "title": "Simple, Transparent Pricing",
+        "description": "Choose the plan that's right for your business. All plans include 14-day free trial.",
+        "show_billing_toggle": true,
+        "show_trust_banner": true,
+        "trust_text": "💰 30-day money-back guarantee • 🚀 No credit card required • ⚡ Cancel anytime"
+      }
+    },
+    "testimonials_carousel": {
+      "type": "testimonials-carousel",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Appointly has completely transformed our booking process. We've seen a 45% increase in reservations and save 15 hours every week. The automated reminders alone are worth it!",
+            "author_name": "Jean-Pierre Dubois",
+            "author_role": "Owner",
+            "company": "Lumière Restaurant, Paris",
+            "result_metric": "+45%",
+            "result_label": "More bookings"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The automated reminders have reduced our no-shows by 30%. Our clients love how easy it is to book online. Best investment we've made this year!",
+            "author_name": "Sarah Johnson",
+            "author_role": "Manager",
+            "company": "Glow Spa, London",
+            "result_metric": "-30%",
+            "result_label": "Fewer no-shows"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The interface is beautiful and intuitive. Our members can easily book classes from their phones. The analytics help us optimize our schedule and grow revenue.",
+            "author_name": "Mike Chen",
+            "author_role": "Director",
+            "company": "Apex Fitness, Berlin",
+            "result_metric": "4.9★",
+            "result_label": "Client rating"
+          }
+        },
+        "testimonial_4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Setting up Appointly was incredibly easy. Within 2 weeks we had a professional booking website. The support team is fantastic - they helped us every step of the way.",
+            "author_name": "Elena Rossi",
+            "author_role": "Founder",
+            "company": "Bella Vita Salon, Milan",
+            "result_metric": "€8k+",
+            "result_label": "Monthly revenue increase"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3",
+        "testimonial_4"
+      ],
+      "settings": {
+        "subtitle": "Testimonials",
+        "title": "What Our Clients Say",
+        "description": "Don't just take our word for it. Here's what real businesses say about Appointly.",
+        "autoplay": true,
+        "autoplay_speed": 6
+      }
+    },
+    "faq_accordion": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "question",
+          "settings": {
+            "question": "How long does it take to set up?",
+            "answer": "<p>Most booking websites are live within 14-21 days from the initial consultation. This includes design, development, testing, training, and launch. We can expedite for urgent projects.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "question",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": "<p>We accept bank transfer, PayPal, credit cards (Visa, Mastercard, Amex), and offer flexible payment plans for larger projects. Monthly subscriptions can be paid via automatic billing.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "question",
+          "settings": {
+            "question": "Can I customize the design?",
+            "answer": "<p>Absolutely! Every website is fully customized to match your brand colors, logo, fonts, and style preferences. We provide 2 design concepts and unlimited revisions until you're 100% satisfied.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "question",
+          "settings": {
+            "question": "What happens after launch?",
+            "answer": "<p>We provide 30 days of free post-launch support. After that, we offer ongoing maintenance plans starting at €80/month including updates, backups, security monitoring, and technical support.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer refunds?",
+            "answer": "<p>Yes! We offer a 30-day money-back guarantee if you're not satisfied with the service. We're confident you'll love your new booking website.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "question",
+          "settings": {
+            "question": "Can I add more features later?",
+            "answer": "<p>Yes! You can upgrade your plan or add individual features at any time. We'll provide a quote for any custom additions like multi-language support, custom integrations, or white-label options.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "question",
+          "settings": {
+            "question": "Is my data secure and GDPR compliant?",
+            "answer": "<p>Absolutely. We use bank-level encryption (SSL/TLS), secure cloud hosting, and are fully GDPR compliant. Your customer data is stored in European data centers and never shared with third parties.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "question",
+          "settings": {
+            "question": "Do you provide training?",
+            "answer": "<p>Yes! We provide comprehensive training via video call, plus written documentation and video tutorials. Your team will be confident managing bookings, customers, and settings within hours.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "subtitle": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Everything you need to know about Appointly and booking systems.",
+        "cta_subtext": "Still have questions?",
+        "cta_text": "Contact Us",
+        "cta_link": "/pages/contact"
+      }
+    },
+    "cta_final": {
+      "type": "cta-final",
+      "settings": {
+        "gradient_start": "#667eea",
+        "gradient_end": "#764ba2",
+        "badge_text": "🎉 Limited Time Offer",
+        "title": "Ready to Transform Your Booking Process?",
+        "subtitle": "Join 500+ businesses already using Appointly to automate reservations and grow their revenue. Get started today with our 14-day free trial.",
+        "primary_cta_text": "Get Started Free",
+        "primary_cta_link": "/pages/contact",
+        "secondary_cta_text": "Schedule a Demo",
+        "secondary_cta_link": "/pages/contact",
+        "subtext": "💳 No credit card required • ⚡ 14-day free trial • 🔒 Cancel anytime"
+      }
+    }
+  },
+  "order": [
+    "hero_advanced",
+    "logo_cloud",
+    "features_grid",
+    "process_steps",
+    "text_image_split",
+    "stats_counter",
+    "video_embed",
+    "pricing_table",
+    "testimonials_carousel",
+    "faq_accordion",
+    "cta_final"
+  ]
+}

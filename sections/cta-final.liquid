@@ -1,0 +1,216 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - FINAL CTA SECTION
+  Conversion-focused call-to-action
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="cta-final section">
+  <div class="cta-final__background">
+    <div class="cta-final__gradient"></div>
+  </div>
+
+  <div class="container">
+    <div class="cta-final__content" data-aos="zoom-in">
+      
+      {% if section.settings.badge_text != blank %}
+        <div class="cta-final__badge">
+          {{ section.settings.badge_text }}
+        </div>
+      {% endif %}
+
+      <h2 class="cta-final__title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.subtitle != blank %}
+        <p class="cta-final__subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+
+      <div class="cta-final__actions">
+        {% if section.settings.primary_cta_text != blank %}
+          <a href="{{ section.settings.primary_cta_link }}" class="btn btn--primary btn--large">
+            {{ section.settings.primary_cta_text }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.secondary_cta_text != blank %}
+          <a href="{{ section.settings.secondary_cta_link }}" class="btn btn--ghost btn--large">
+            {{ section.settings.secondary_cta_text }}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if section.settings.subtext != blank %}
+        <p class="cta-final__subtext">{{ section.settings.subtext }}</p>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-final {
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .cta-final__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .cta-final__gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+      {{ section.settings.gradient_start | default: '#007AFF' }} 0%, 
+      {{ section.settings.gradient_end | default: '#5856D6' }} 100%);
+  }
+
+  .cta-final__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-16) var(--space-6);
+    color: white;
+  }
+
+  .cta-final__badge {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-6);
+  }
+
+  .cta-final__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    margin-bottom: var(--space-6);
+    color: white;
+  }
+
+  .cta-final__subtitle {
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-relaxed);
+    opacity: 0.95;
+    margin-bottom: var(--space-8);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-final__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .cta-final__subtext {
+    font-size: var(--font-size-sm);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .cta-final__actions {
+      flex-direction: column;
+    }
+
+    .cta-final__actions .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Final CTA",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "gradient_start",
+      "label": "Gradient Start Color",
+      "default": "#007AFF"
+    },
+    {
+      "type": "color",
+      "id": "gradient_end",
+      "label": "Gradient End Color",
+      "default": "#5856D6"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text (Optional)",
+      "default": "Limited Time Offer"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "Ready to Transform Your Booking Process?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Join 50+ businesses already using Appointly to automate reservations and grow their revenue."
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "Primary Button Text",
+      "default": "Get Started Free"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Secondary Button Text (Optional)",
+      "default": "Schedule a Demo"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "No credit card required • 14-day free trial • Cancel anytime"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Final CTA"
+    }
+  ]
+}
+{% endschema %}

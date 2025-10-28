@@ -1,0 +1,266 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - PROCESS STEPS
+  How it works section
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="process-section section section--bg-secondary">
+  <div class="container">
+    
+    <div class="section-header text-center" data-aos="fade-up">
+      {% if section.settings.subtitle != blank %}
+        <span class="section-subtitle">{{ section.settings.subtitle }}</span>
+      {% endif %}
+      
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="process-steps">
+      {% for block in section.blocks %}
+        {% if block.type == 'step' %}
+          <div class="process-step" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}" {{ block.shopify_attributes }}>
+            
+            <div class="process-step__number">{{ forloop.index }}</div>
+            
+            <div class="process-step__icon">
+              {% if block.settings.icon_emoji != blank %}
+                {{ block.settings.icon_emoji }}
+              {% elsif block.settings.icon_image != blank %}
+                <img src="{{ block.settings.icon_image | img_url: '80x' }}" alt="{{ block.settings.title }}">
+              {% else %}
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <rect width="48" height="48" rx="12" fill="currentColor" opacity="0.1"/>
+                  <path d="M24 16V32M16 24H32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              {% endif %}
+            </div>
+
+            <h3 class="process-step__title">{{ block.settings.title }}</h3>
+            <p class="process-step__description">{{ block.settings.description }}</p>
+
+            {% if forloop.last == false %}
+              <div class="process-step__connector">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <path d="M8 20H32M32 20L24 12M32 20L24 28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            {% endif %}
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .process-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    margin-top: var(--space-16);
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .process-steps {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+  }
+
+  .process-step {
+    position: relative;
+    text-align: center;
+    padding: var(--space-8);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2xl);
+    border: 2px solid var(--color-gray-200);
+    transition: all var(--duration-base) var(--ease-out);
+  }
+
+  .process-step:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .process-step__number {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-md);
+  }
+
+  .process-step__icon {
+    width: 80px;
+    height: 80px;
+    margin: var(--space-6) auto var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--color-primary);
+  }
+
+  .process-step__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .process-step__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .process-step__description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .process-step__connector {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .process-step__connector {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: -28px;
+      transform: translateY(-50%);
+      color: var(--color-primary);
+      z-index: 1;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .process-step::after {
+      content: '';
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%) rotate(90deg);
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 16px solid var(--color-primary);
+    }
+
+    .process-step:last-child::after {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Process Steps",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "How It Works"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Get Your Booking Website in 3 Simple Steps"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "From consultation to launch, we make the process simple and stress-free."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_emoji",
+          "label": "Icon (Emoji)",
+          "default": "💬",
+          "info": "Use emoji or upload image below"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free Consultation"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "We discuss your needs, preferences, and business goals in a 30-minute video call."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process Steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "icon_emoji": "💬",
+            "title": "Free Consultation",
+            "description": "We discuss your needs and business goals in a 30-minute call."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon_emoji": "🎨",
+            "title": "Custom Design",
+            "description": "We create a beautiful booking website tailored to your brand."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon_emoji": "🚀",
+            "title": "Launch & Support",
+            "description": "We launch your site and provide training and ongoing support."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

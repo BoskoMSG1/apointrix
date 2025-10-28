@@ -1,0 +1,475 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - TESTIMONIALS CAROUSEL
+  Customer reviews and social proof
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="testimonials-section section" id="testimonials">
+  <div class="container">
+    
+    {%- comment -%} Section Header {%- endcomment -%}
+    <div class="section-header text-center" data-aos="fade-up">
+      {% if section.settings.subtitle != blank %}
+        <span class="section-subtitle">{{ section.settings.subtitle }}</span>
+      {% endif %}
+      
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    {%- comment -%} Testimonials Carousel {%- endcomment -%}
+    <div class="testimonials-carousel" data-aos="fade-up" data-aos-delay="200">
+      <div class="testimonials-track">
+        {% for block in section.blocks %}
+          {% if block.type == 'testimonial' %}
+            <div class="testimonial-card" {{ block.shopify_attributes }}>
+              
+              {%- comment -%} Rating Stars {%- endcomment -%}
+              <div class="testimonial-card__rating">
+                {% for i in (1..5) %}
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 1L12.5 6L18 7L14 11L15 17L10 14L5 17L6 11L2 7L7.5 6L10 1Z" fill="currentColor"/>
+                  </svg>
+                {% endfor %}
+              </div>
+
+              {%- comment -%} Quote {%- endcomment -%}
+              <blockquote class="testimonial-card__quote">
+                "{{ block.settings.quote }}"
+              </blockquote>
+
+              {%- comment -%} Author {%- endcomment -%}
+              <div class="testimonial-card__author">
+                {% if block.settings.author_image != blank %}
+                  <img src="{{ block.settings.author_image | img_url: '80x' }}" alt="{{ block.settings.author_name }}" class="testimonial-card__avatar">
+                {% else %}
+                  <div class="testimonial-card__avatar testimonial-card__avatar--placeholder">
+                    {{ block.settings.author_name | slice: 0 }}
+                  </div>
+                {% endif %}
+                
+                <div class="testimonial-card__author-info">
+                  <div class="testimonial-card__author-name">{{ block.settings.author_name }}</div>
+                  <div class="testimonial-card__author-role">{{ block.settings.author_role }}</div>
+                  {% if block.settings.company != blank %}
+                    <div class="testimonial-card__company">{{ block.settings.company }}</div>
+                  {% endif %}
+                </div>
+              </div>
+
+              {%- comment -%} Results (Optional) {%- endcomment -%}
+              {% if block.settings.result_metric != blank %}
+                <div class="testimonial-card__result">
+                  <span class="testimonial-card__result-metric">{{ block.settings.result_metric }}</span>
+                  <span class="testimonial-card__result-label">{{ block.settings.result_label }}</span>
+                </div>
+              {% endif %}
+
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {%- comment -%} Navigation {%- endcomment -%}
+      <div class="testimonials-nav">
+        <button class="testimonials-nav__btn testimonials-nav__btn--prev" aria-label="Previous testimonial">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="testimonials-nav__dots"></div>
+        <button class="testimonials-nav__btn testimonials-nav__btn--next" aria-label="Next testimonial">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    background-color: var(--color-bg-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonials-carousel {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .testimonials-track {
+    display: flex;
+    gap: var(--space-8);
+    overflow: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .testimonial-card {
+    min-width: 100%;
+    padding: var(--space-10);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    scroll-snap-align: center;
+  }
+
+  .testimonial-card__rating {
+    display: flex;
+    gap: var(--space-1);
+    margin-bottom: var(--space-6);
+    color: var(--color-warning);
+  }
+
+  .testimonial-card__quote {
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-8) 0;
+    font-style: normal;
+  }
+
+  .testimonial-card__author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .testimonial-card__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .testimonial-card__avatar--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .testimonial-card__author-info {
+    flex: 1;
+  }
+
+  .testimonial-card__author-name {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .testimonial-card__author-role {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .testimonial-card__company {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+  }
+
+  .testimonial-card__result {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+  }
+
+  .testimonial-card__result-metric {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-success);
+  }
+
+  .testimonial-card__result-label {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+  }
+
+  .testimonials-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  .testimonials-nav__btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .testimonials-nav__btn:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    transform: scale(1.1);
+  }
+
+  .testimonials-nav__btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .testimonials-nav__dots {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .testimonials-nav__dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-gray-300);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .testimonials-nav__dot.active {
+    width: 24px;
+    background-color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-card {
+      padding: var(--space-6);
+    }
+
+    .testimonial-card__quote {
+      font-size: var(--font-size-lg);
+    }
+  }
+</style>
+
+<script>
+  // Simple carousel functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.testimonials-carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.testimonials-track');
+    const cards = carousel.querySelectorAll('.testimonial-card');
+    const prevBtn = carousel.querySelector('.testimonials-nav__btn--prev');
+    const nextBtn = carousel.querySelector('.testimonials-nav__btn--next');
+    const dotsContainer = carousel.querySelector('.testimonials-nav__dots');
+    
+    let currentIndex = 0;
+
+    // Create dots
+    cards.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'testimonials-nav__dot';
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.testimonials-nav__dot');
+
+    function updateCarousel() {
+      track.scrollLeft = cards[currentIndex].offsetLeft - track.offsetLeft;
+      
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === cards.length - 1;
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      updateCarousel();
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < cards.length - 1) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+
+    // Auto-play (optional)
+    if ({{ section.settings.autoplay | json }}) {
+      setInterval(() => {
+        if (currentIndex < cards.length - 1) {
+          currentIndex++;
+        } else {
+          currentIndex = 0;
+        }
+        updateCarousel();
+      }, {{ section.settings.autoplay_speed | times: 1000 }});
+    }
+
+    updateCarousel();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Testimonials Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Testimonials"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What Our Clients Say"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Don't just take our word for it. Here's what real businesses say about Appointly."
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-play carousel",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Auto-play speed (seconds)",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Appointly has transformed how we handle reservations. We've increased bookings by 45% and saved 15+ hours per week."
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Photo"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Jane Smith"
+        },
+        {
+          "type": "text",
+          "id": "author_role",
+          "label": "Author Role",
+          "default": "Owner"
+        },
+        {
+          "type": "text",
+          "id": "company",
+          "label": "Company Name",
+          "default": "Lumière Restaurant"
+        },
+        {
+          "type": "header",
+          "content": "Result Metrics (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "result_metric",
+          "label": "Result Metric",
+          "info": "e.g., +45% or €10k",
+          "default": "+45%"
+        },
+        {
+          "type": "text",
+          "id": "result_label",
+          "label": "Result Label",
+          "default": "Increase in bookings"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials Carousel",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Appointly has completely transformed our booking process. We've seen a 45% increase in reservations and save hours every week.",
+            "author_name": "Jean-Pierre Dubois",
+            "author_role": "Owner",
+            "company": "Lumière Restaurant",
+            "result_metric": "+45%",
+            "result_label": "More bookings"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The automated reminders alone have reduced our no-shows by 30%. This system pays for itself.",
+            "author_name": "Sarah Johnson",
+            "author_role": "Manager",
+            "company": "Glow Spa",
+            "result_metric": "-30%",
+            "result_label": "Fewer no-shows"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Our clients love how easy it is to book online. The interface is beautiful and intuitive.",
+            "author_name": "Mike Chen",
+            "author_role": "Director",
+            "company": "Apex Fitness",
+            "result_metric": "4.9★",
+            "result_label": "Client rating"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

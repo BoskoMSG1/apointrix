@@ -1,0 +1,197 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - FAQ ACCORDION
+  Frequently asked questions
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="faq-section section" id="faq">
+  <div class="container">
+    
+    {%- comment -%} Section Header {%- endcomment -%}
+    <div class="section-header text-center" data-aos="fade-up">
+      {% if section.settings.subtitle != blank %}
+        <span class="section-subtitle">{{ section.settings.subtitle }}</span>
+      {% endif %}
+      
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    {%- comment -%} FAQ Accordion {%- endcomment -%}
+    <div class="faq-wrapper" data-aos="fade-up" data-aos-delay="200">
+      <div class="accordion">
+        {% for block in section.blocks %}
+          {% if block.type == 'question' %}
+            <div class="accordion-item" {{ block.shopify_attributes }}>
+              <button class="accordion-header" aria-expanded="false">
+                <span class="accordion-header__text">{{ block.settings.question }}</span>
+                <span class="accordion-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {%- comment -%} CTA {%- endcomment -%}
+    {% if section.settings.cta_text != blank %}
+      <div class="faq-cta text-center" data-aos="fade-up" data-aos-delay="400">
+        <p class="faq-cta__text">{{ section.settings.cta_subtext }}</p>
+        <a href="{{ section.settings.cta_link }}" class="btn btn--primary btn--large">
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background-color: var(--color-bg-primary);
+  }
+
+  .faq-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-cta {
+    margin-top: var(--space-16);
+  }
+
+  .faq-cta__text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FAQ Accordion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Everything you need to know about Appointly and booking systems."
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_subtext",
+      "label": "CTA Subtext",
+      "default": "Still have questions?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How long does it take to set up?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Most booking websites are up and running within 14-21 days from the initial consultation. The timeline includes design, development, testing, and training.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Accordion",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "How long does it take to set up?",
+            "answer": "<p>Most booking websites are live within 14-21 days from the initial consultation.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": "<p>We accept bank transfer, PayPal, and major credit cards. Payment plans are available for larger projects.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Can I customize the design?",
+            "answer": "<p>Absolutely! Every website is fully customized to match your brand colors, logo, and style preferences.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What happens after launch?",
+            "answer": "<p>We provide ongoing support and maintenance plans starting at €80/month, including updates, backups, and technical support.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer refunds?",
+            "answer": "<p>Yes, we offer a 30-day money-back guarantee if you're not satisfied with the service.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Can I add more features later?",
+            "answer": "<p>Yes! You can upgrade your plan or add individual features at any time. We'll provide a quote for any custom additions.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

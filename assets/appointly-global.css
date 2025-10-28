@@ -1,16 +1,22 @@
 /* ============================================
-   APPOINTLY THEME - GLOBAL STYLES
-   Base styles applied site-wide
-   Version: 1.0.0
+   APOINTRIX - PREMIUM GLOBAL STYLES
+   Next-Generation Design System
+   Version: 2.0.0
    ============================================ */
 
 /* ==========================================
-   BASE STYLES
+   BASE STYLES - Enhanced Foundation
    ========================================== */
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 html {
   font-size: 16px;
-  scroll-padding-top: 80px; /* Offset for sticky header */
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -19,11 +25,27 @@ body {
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-primary);
-  background-color: var(--color-bg-primary);
+  background: var(--color-bg-primary);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Premium Background with Mesh Gradient */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-mesh-2);
+  opacity: 0.4;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* ==========================================
-   TYPOGRAPHY
+   TYPOGRAPHY - Premium Type System
    ========================================== */
 
 h1, h2, h3, h4, h5, h6 {
@@ -33,15 +55,18 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: var(--letter-spacing-tight);
   color: var(--color-text-primary);
   margin-bottom: var(--space-4);
+  position: relative;
 }
 
 h1 {
   font-size: var(--font-size-8xl);
   font-weight: var(--font-weight-extrabold);
+  letter-spacing: -0.04em;
 }
 
 h2 {
   font-size: var(--font-size-6xl);
+  letter-spacing: -0.03em;
 }
 
 h3 {
@@ -63,15 +88,25 @@ h6 {
 p {
   margin-bottom: var(--space-4);
   color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
 }
 
+/* Enhanced Links */
 a {
   color: var(--color-primary);
-  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-out);
+  position: relative;
 }
 
 a:hover {
   color: var(--color-primary-dark);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius-xs);
 }
 
 strong, b {
@@ -82,12 +117,36 @@ em, i {
   font-style: italic;
 }
 
-/* Text Gradient Utility */
+/* Text Gradient Utilities */
 .text-gradient {
   background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
+}
+
+.text-gradient-primary {
+  background: var(--gradient-text-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.text-gradient-vivid {
+  background: var(--gradient-text-vivid);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  animation: gradient-shift 3s ease infinite;
+  background-size: 200% auto;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
 }
 
 /* ==========================================
@@ -161,16 +220,46 @@ em, i {
 /* Section Background Variants */
 .section--bg-secondary {
   background-color: var(--color-bg-secondary);
+  position: relative;
 }
 
 .section--bg-primary {
-  background-color: var(--color-primary);
+  background: var(--gradient-primary);
   color: var(--color-white);
+  position: relative;
+  overflow: hidden;
 }
 
 .section--bg-gradient {
-  background: var(--gradient-primary);
+  background: var(--gradient-primary-vivid);
   color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.section--bg-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-mesh-2);
+  opacity: 0.5;
+  animation: mesh-flow 20s ease-in-out infinite;
+}
+
+@keyframes mesh-flow {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(5deg); }
+}
+
+/* Glass Card */
+.section--glass {
+  background: var(--glass-bg-strong);
+  backdrop-filter: var(--backdrop-glass);
+  border: 1px solid var(--glass-border);
+  position: relative;
 }
 
 /* ==========================================

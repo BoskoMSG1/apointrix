@@ -2,8 +2,8 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}">
 <head>
   <!-- ============================================
-       APPOINTLY THEME v1.0.0
-       Professional Booking System Platform
+       APOINTRIX v2.0.0
+       Premium Next-Gen Design System
        ============================================ -->
   
   <meta charset="utf-8">
@@ -56,10 +56,10 @@
     <meta name="twitter:description" content="{{ page_description | escape }}">
   {% endif %}
 
-  <!-- Google Fonts - Inter -->
+  <!-- Premium Google Fonts - DM Sans & Clash Display Alternative -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- AOS - Animate On Scroll -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -135,17 +135,77 @@
 
   <!-- Initialize -->
   <script>
-    // Initialize AOS
+    // Initialize AOS with enhanced settings
     AOS.init({
-      duration: 800,
+      duration: 1000,
       easing: 'ease-out-cubic',
       once: true,
-      offset: 100,
-      delay: 50
+      offset: 120,
+      delay: 100,
+      anchorPlacement: 'top-bottom',
+      mirror: false,
+      disable: false
+    });
+
+    // Premium Interactive Enhancements
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth cursor interaction
+      const interactiveElements = document.querySelectorAll('.btn, .card, a, button');
+
+      interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', function() {
+          this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+      });
+
+      // Parallax effect for mesh background
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            const scrolled = window.pageYOffset;
+            const meshBg = document.querySelector('body::before');
+            if (meshBg) {
+              document.body.style.setProperty('--scroll-offset', scrolled * 0.5 + 'px');
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      // Add micro-interactions to cards
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) / 20;
+          const rotateY = (centerX - x) / 20;
+
+          this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+      });
+
+      // Gradient text animation
+      const gradientTexts = document.querySelectorAll('.text-gradient-vivid');
+      gradientTexts.forEach(text => {
+        text.style.backgroundSize = '200% auto';
+      });
     });
 
     // Theme version
-    console.log('🎨 Appointly Theme v1.0.0 - Loaded');
+    console.log('✨ Apointrix Premium v2.0.0 - Loaded');
+    console.log('🎨 Next-Generation Design System Active');
   </script>
 
 </body>

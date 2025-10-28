@@ -1,0 +1,332 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - FEATURES GRID
+  Showcase platform features
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="features-section section" id="features">
+  <div class="container">
+    
+    {%- comment -%} Section Header {%- endcomment -%}
+    <div class="section-header text-center" data-aos="fade-up">
+      {% if section.settings.subtitle != blank %}
+        <span class="section-subtitle">{{ section.settings.subtitle }}</span>
+      {% endif %}
+      
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    {%- comment -%} Features Grid {%- endcomment -%}
+    <div class="features-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'feature' %}
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}" {{ block.shopify_attributes }}>
+            
+            {%- comment -%} Icon {%- endcomment -%}
+            <div class="feature-card__icon-wrapper">
+              {% if block.settings.icon_image != blank %}
+                <img src="{{ block.settings.icon_image | img_url: '80x' }}" alt="{{ block.settings.title }}" class="feature-card__icon-image">
+              {% elsif block.settings.icon_emoji != blank %}
+                <span class="feature-card__icon-emoji">{{ block.settings.icon_emoji }}</span>
+              {% else %}
+                <svg class="feature-card__icon-svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <rect width="40" height="40" rx="8" fill="currentColor" opacity="0.1"/>
+                  <path d="M20 12V28M12 20H28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              {% endif %}
+            </div>
+
+            {%- comment -%} Content {%- endcomment -%}
+            <div class="feature-card__content">
+              <h3 class="feature-card__title">{{ block.settings.title }}</h3>
+              <p class="feature-card__description">{{ block.settings.description }}</p>
+              
+              {% if block.settings.link_text != blank %}
+                <a href="{{ block.settings.link_url }}" class="feature-card__link">
+                  {{ block.settings.link_text }}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </a>
+              {% endif %}
+            </div>
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {%- comment -%} CTA {%- endcomment -%}
+    {% if section.settings.cta_text != blank %}
+      <div class="features-cta text-center" data-aos="fade-up" data-aos-delay="600">
+        <a href="{{ section.settings.cta_link }}" class="btn btn--primary btn--large">
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  .features-section {
+    background-color: var(--color-bg-primary);
+  }
+
+  .section-header {
+    max-width: 800px;
+    margin: 0 auto var(--space-16);
+  }
+
+  .section-subtitle {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background-color: rgba(0, 122, 255, 0.1);
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+
+  .section-description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .feature-card {
+    padding: var(--space-8);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-gray-200);
+    transition: all var(--duration-base) var(--ease-out);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+  }
+
+  .feature-card__icon-wrapper {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(88, 86, 214, 0.1) 100%);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-6);
+    color: var(--color-primary);
+  }
+
+  .feature-card__icon-emoji {
+    font-size: 2rem;
+  }
+
+  .feature-card__icon-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .feature-card__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .feature-card__description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .feature-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: gap var(--duration-fast) var(--ease-out);
+  }
+
+  .feature-card__link:hover {
+    gap: var(--space-3);
+  }
+
+  .features-cta {
+    margin-top: var(--space-16);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Features Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Features"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Everything You Need to Manage Bookings"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Powerful features designed to help you save time and grow your business."
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "See All Features"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_emoji",
+          "label": "Icon (Emoji)",
+          "default": "📅",
+          "info": "Use emoji or upload image below"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Smart Scheduling"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "AI-powered scheduling that prevents conflicts and optimizes your calendar automatically."
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text (Optional)",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features Grid",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "📅",
+            "title": "Smart Scheduling",
+            "description": "AI-powered scheduling that prevents conflicts and optimizes your calendar."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "💬",
+            "title": "Auto Communications",
+            "description": "Automated SMS and email reminders keep your customers informed."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "💳",
+            "title": "Secure Payments",
+            "description": "Accept payments online with bank-level security and encryption."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "📊",
+            "title": "Analytics Dashboard",
+            "description": "Track bookings, revenue, and customer behavior in real-time."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "🔔",
+            "title": "Smart Reminders",
+            "description": "Reduce no-shows with intelligent automated reminder system."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_emoji": "🌐",
+            "title": "Multi-Channel",
+            "description": "Accept bookings from website, Instagram, Facebook, and WhatsApp."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,316 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - CONTACT FORM
+  Professional contact section
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="contact-section section">
+  <div class="container">
+    
+    <div class="section-header text-center" data-aos="fade-up">
+      {% if section.settings.subtitle != blank %}
+        <span class="section-subtitle">{{ section.settings.subtitle }}</span>
+      {% endif %}
+      
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="contact-wrapper">
+      
+      {%- comment -%} Contact Info {%- endcomment -%}
+      <div class="contact-info" data-aos="fade-right">
+        
+        {% if section.settings.info_title != blank %}
+          <h3 class="contact-info__title">{{ section.settings.info_title }}</h3>
+        {% endif %}
+
+        {% if section.settings.info_text != blank %}
+          <p class="contact-info__text">{{ section.settings.info_text }}</p>
+        {% endif %}
+
+        <div class="contact-info__items">
+          {% if section.settings.email != blank %}
+            <div class="contact-info__item">
+              <div class="contact-info__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 8L10.89 13.26C11.5312 13.6728 12.4688 13.6728 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-info__label">Email</div>
+                <a href="mailto:{{ section.settings.email }}" class="contact-info__value">{{ section.settings.email }}</a>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if section.settings.phone != blank %}
+            <div class="contact-info__item">
+              <div class="contact-info__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-info__label">Phone</div>
+                <a href="tel:{{ section.settings.phone | replace: ' ', '' }}" class="contact-info__value">{{ section.settings.phone }}</a>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if section.settings.address != blank %}
+            <div class="contact-info__item">
+              <div class="contact-info__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M17.657 16.657L13.414 20.9C12.633 21.681 11.367 21.681 10.586 20.9L6.343 16.657C3.219 13.533 3.219 8.467 6.343 5.343C9.467 2.219 14.533 2.219 17.657 5.343C20.781 8.467 20.781 13.533 17.657 16.657Z" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-info__label">Location</div>
+                <div class="contact-info__value">{{ section.settings.address }}</div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+
+      {%- comment -%} Contact Form {%- endcomment -%}
+      <div class="contact-form-wrapper" data-aos="fade-left">
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <div class="alert alert--success">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>Thanks for contacting us! We'll get back to you soon.</span>
+            </div>
+          {% endif %}
+
+          {% if form.errors %}
+            <div class="alert alert--error">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 8V12M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>Please fix the errors below:</span>
+            </div>
+          {% endif %}
+
+          <div class="form-group">
+            <label for="contact-name" class="form-label form-label--required">Name</label>
+            <input 
+              type="text" 
+              id="contact-name" 
+              name="contact[name]" 
+              class="form-input {% if form.errors contains 'name' %}form-input--error{% endif %}"
+              value="{% if form.name %}{{ form.name }}{% endif %}"
+              required>
+            {% if form.errors contains 'name' %}
+              <div class="form-error">Please enter your name</div>
+            {% endif %}
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email" class="form-label form-label--required">Email</label>
+            <input 
+              type="email" 
+              id="contact-email" 
+              name="contact[email]" 
+              class="form-input {% if form.errors contains 'email' %}form-input--error{% endif %}"
+              value="{% if form.email %}{{ form.email }}{% endif %}"
+              required>
+            {% if form.errors contains 'email' %}
+              <div class="form-error">Please enter a valid email</div>
+            {% endif %}
+          </div>
+
+          <div class="form-group">
+            <label for="contact-phone" class="form-label">Phone (Optional)</label>
+            <input 
+              type="tel" 
+              id="contact-phone" 
+              name="contact[phone]" 
+              class="form-input"
+              value="{% if form.phone %}{{ form.phone }}{% endif %}">
+          </div>
+
+          <div class="form-group">
+            <label for="contact-message" class="form-label form-label--required">Message</label>
+            <textarea 
+              id="contact-message" 
+              name="contact[body]" 
+              class="form-textarea {% if form.errors contains 'body' %}form-textarea--error{% endif %}"
+              rows="6"
+              required>{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            {% if form.errors contains 'body' %}
+              <div class="form-error">Please enter a message</div>
+            {% endif %}
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--full btn--large">
+            Send Message
+          </button>
+        {% endform %}
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    margin-top: var(--space-16);
+  }
+
+  @media (min-width: 1024px) {
+    .contact-wrapper {
+      grid-template-columns: 2fr 3fr;
+      gap: var(--space-16);
+    }
+  }
+
+  .contact-info {
+    padding: var(--space-8);
+  }
+
+  .contact-info__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .contact-info__text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-8);
+  }
+
+  .contact-info__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .contact-info__item {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  .contact-info__icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    color: var(--color-primary);
+  }
+
+  .contact-info__label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-1);
+  }
+
+  .contact-info__value {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+
+  .contact-info__value:hover {
+    color: var(--color-primary);
+  }
+
+  .contact-form-wrapper {
+    padding: var(--space-10);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Contact Form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Get In Touch"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Let's Start Your Booking Website"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Fill out the form below and we'll get back to you within 24 hours."
+    },
+    {
+      "type": "header",
+      "content": "Contact Information"
+    },
+    {
+      "type": "text",
+      "id": "info_title",
+      "label": "Info Section Title",
+      "default": "Contact Details"
+    },
+    {
+      "type": "textarea",
+      "id": "info_text",
+      "label": "Info Section Text",
+      "default": "Ready to transform your booking process? Reach out and let's discuss how we can help your business grow."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email Address",
+      "default": "hello@appointly.com"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number",
+      "default": "+381 60 123 4567"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "Kragujevac, Serbia"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Form"
+    }
+  ]
+}
+{% endschema %}

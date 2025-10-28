@@ -1,238 +1,100 @@
 {
   "sections": {
-    "portfolio_hero": {
-      "type": "main-page",
-      "settings": {}
+    "about_hero": {
+      "type": "about-hero",
+      "settings": {
+        "subtitle": "About Us",
+        "title": "We Help Businesses Automate Bookings",
+        "description": "<p>Founded in 2023, Appointly was born from a simple observation: too many great businesses were losing customers because booking was too complicated.</p><p>We believe every service business deserves a beautiful, easy-to-use booking website that works 24/7. That's why we've made it our mission to help restaurants, salons, spas, fitness studios, and medical practices streamline their reservation process.</p>",
+        "cta_text": "Get Started",
+        "cta_link": "/pages/contact"
+      }
     },
-    "portfolio_grid": {
-      "type": "portfolio-grid",
+    "company_values": {
+      "type": "company-values",
       "blocks": {
-        "category_restaurants": {
-          "type": "category",
+        "value_1": {
+          "type": "value",
           "settings": {
-            "name": "Restaurants",
-            "slug": "restaurants"
+            "icon_emoji": "🎯",
+            "title": "Customer First",
+            "description": "We obsess over making our clients successful. Your growth is our success."
           }
         },
-        "category_salons": {
-          "type": "category",
+        "value_2": {
+          "type": "value",
           "settings": {
-            "name": "Salons & Spas",
-            "slug": "salons"
+            "icon_emoji": "💡",
+            "title": "Innovation",
+            "description": "Always improving, always learning, always evolving with the latest technology."
           }
         },
-        "category_fitness": {
-          "type": "category",
+        "value_3": {
+          "type": "value",
           "settings": {
-            "name": "Fitness",
-            "slug": "fitness"
+            "icon_emoji": "🤝",
+            "title": "Trust & Transparency",
+            "description": "Honest communication in everything we do. No hidden fees, no surprises."
           }
         },
-        "category_medical": {
-          "type": "category",
+        "value_4": {
+          "type": "value",
           "settings": {
-            "name": "Medical",
-            "slug": "medical"
-          }
-        },
-        "project_1": {
-          "type": "project",
-          "settings": {
-            "client": "Lumière Restaurant",
-            "title": "Modern Booking Website",
-            "description": "A beautiful reservation system that increased bookings by 45% in the first month. Custom design with French bistro aesthetic.",
-            "category": "restaurants",
-            "tags": "Booking, Restaurant, French Cuisine, Premium",
-            "project_url": ""
-          }
-        },
-        "project_2": {
-          "type": "project",
-          "settings": {
-            "client": "Glow Spa & Wellness",
-            "title": "Spa Reservation Platform",
-            "description": "Automated appointment scheduling with SMS reminders reduced no-shows by 30%. Integrated with payment processing.",
-            "category": "salons",
-            "tags": "Spa, Wellness, Automation, SMS",
-            "project_url": ""
-          }
-        },
-        "project_3": {
-          "type": "project",
-          "settings": {
-            "client": "Apex Fitness Studio",
-            "title": "Class Booking System",
-            "description": "Real-time class scheduling with capacity management and payment integration. Mobile-first design for on-the-go bookings.",
-            "category": "fitness",
-            "tags": "Fitness, Classes, Payments, Mobile",
-            "project_url": ""
-          }
-        },
-        "project_4": {
-          "type": "project",
-          "settings": {
-            "client": "Central Dental Clinic",
-            "title": "Patient Portal & Booking",
-            "description": "Secure online booking with patient management system. HIPAA compliant with encrypted data storage.",
-            "category": "medical",
-            "tags": "Healthcare, HIPAA, Secure, Portal",
-            "project_url": ""
-          }
-        },
-        "project_5": {
-          "type": "project",
-          "settings": {
-            "client": "Bella Vista Wine Bar",
-            "title": "Wine Bar Reservations",
-            "description": "Elegant booking experience with wine pairing suggestions and VIP table management. Sommelier chat integration.",
-            "category": "restaurants",
-            "tags": "Wine Bar, Premium, Experience, VIP",
-            "project_url": ""
-          }
-        },
-        "project_6": {
-          "type": "project",
-          "settings": {
-            "client": "Elite Cuts Barbershop",
-            "title": "Barbershop Booking App",
-            "description": "Modern booking system with stylist selection and service customization. Loyalty program integration included.",
-            "category": "salons",
-            "tags": "Barbershop, Grooming, Stylists, Loyalty",
-            "project_url": ""
-          }
-        },
-        "project_7": {
-          "type": "project",
-          "settings": {
-            "client": "Yoga Flow Studio",
-            "title": "Yoga Class Scheduler",
-            "description": "Beautiful, zen-inspired booking interface for yoga and meditation classes. Membership management included.",
-            "category": "fitness",
-            "tags": "Yoga, Meditation, Wellness, Classes",
-            "project_url": ""
-          }
-        },
-        "project_8": {
-          "type": "project",
-          "settings": {
-            "client": "Smile Orthodontics",
-            "title": "Orthodontist Appointment System",
-            "description": "Family-friendly booking platform with treatment tracking and appointment reminders. Insurance integration.",
-            "category": "medical",
-            "tags": "Orthodontics, Family, Insurance, Tracking",
-            "project_url": ""
-          }
-        },
-        "project_9": {
-          "type": "project",
-          "settings": {
-            "client": "Trattoria Napoli",
-            "title": "Italian Restaurant Bookings",
-            "description": "Traditional Italian restaurant with modern booking system. Table management with floor plan visualization.",
-            "category": "restaurants",
-            "tags": "Italian, Traditional, Table Management",
-            "project_url": ""
-          }
-        },
-        "project_10": {
-          "type": "project",
-          "settings": {
-            "client": "Pure Beauty Salon",
-            "title": "Multi-Service Salon Platform",
-            "description": "Comprehensive booking system for hair, nails, makeup services. Staff scheduling with skill-based assignment.",
-            "category": "salons",
-            "tags": "Beauty, Multi-Service, Staff Management",
-            "project_url": ""
-          }
-        },
-        "project_11": {
-          "type": "project",
-          "settings": {
-            "client": "CrossFit Revolution",
-            "title": "CrossFit Box Booking System",
-            "description": "High-performance booking system for WOD classes with athlete profiles and progress tracking.",
-            "category": "fitness",
-            "tags": "CrossFit, WOD, Performance, Tracking",
-            "project_url": ""
-          }
-        },
-        "project_12": {
-          "type": "project",
-          "settings": {
-            "client": "Vision Eye Care",
-            "title": "Optometry Booking Portal",
-            "description": "Professional eye care booking with vision insurance verification and frame selection preview.",
-            "category": "medical",
-            "tags": "Optometry, Vision, Insurance, Preview",
-            "project_url": ""
+            "icon_emoji": "🚀",
+            "title": "Excellence",
+            "description": "No shortcuts. We deliver quality every time, on time, with attention to detail."
           }
         }
       },
       "block_order": [
-        "category_restaurants",
-        "category_salons",
-        "category_fitness",
-        "category_medical",
-        "project_1",
-        "project_2",
-        "project_3",
-        "project_4",
-        "project_5",
-        "project_6",
-        "project_7",
-        "project_8",
-        "project_9",
-        "project_10",
-        "project_11",
-        "project_12"
+        "value_1",
+        "value_2",
+        "value_3",
+        "value_4"
       ],
       "settings": {
-        "subtitle": "Our Work",
-        "title": "Recent Projects",
-        "description": "Explore our portfolio of successful booking websites we've created for clients across Europe. From restaurants to medical clinics, we've helped businesses of all sizes streamline their reservation process.",
-        "show_filters": true,
-        "cta_subtext": "Ready to get your own booking website?",
-        "cta_text": "Start Your Project",
-        "cta_link": "/pages/contact"
+        "subtitle": "Our Values",
+        "title": "What Drives Us",
+        "description": "Our core principles guide everything we do, from design to customer support."
       }
     },
-    "stats_portfolio": {
+    "stats_about": {
       "type": "stats-counter",
       "blocks": {
         "stat_1": {
           "type": "stat",
           "settings": {
-            "icon_emoji": "🎨",
-            "number": "50",
+            "icon_emoji": "🏢",
+            "number": "500",
             "suffix": "+",
-            "label": "Projects Completed"
+            "label": "Active Clients"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
-            "icon_emoji": "😊",
-            "number": "500",
-            "suffix": "+",
-            "label": "Happy Clients"
+            "icon_emoji": "📅",
+            "number": "50",
+            "suffix": "k+",
+            "label": "Bookings per Month"
           }
         },
         "stat_3": {
           "type": "stat",
           "settings": {
-            "icon_emoji": "⭐",
-            "number": "4",
-            "suffix": ".9",
-            "label": "Average Rating"
+            "icon_emoji": "🌍",
+            "number": "15",
+            "suffix": "+",
+            "label": "Countries"
           }
         },
         "stat_4": {
           "type": "stat",
           "settings": {
-            "icon_emoji": "🌍",
-            "number": "12",
-            "suffix": "+",
-            "label": "Countries Served"
+            "icon_emoji": "⚡",
+            "number": "99",
+            "suffix": "%",
+            "label": "Uptime"
           }
         }
       },
@@ -243,69 +105,257 @@
         "stat_4"
       ],
       "settings": {
-        "title": "Trusted by Businesses Across Europe",
-        "subtitle": "Our track record speaks for itself"
+        "title": "Our Impact in Numbers",
+        "subtitle": "Helping businesses across Europe grow every day"
       }
     },
-    "testimonials_portfolio": {
+    "text_image_story": {
+      "type": "text-image-split",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "text": "Founded by booking industry veterans"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "text": "10+ years of combined experience"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "text": "Served clients in 15+ countries"
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "text": "Built on modern, scalable technology"
+          }
+        },
+        "feature_5": {
+          "type": "feature",
+          "settings": {
+            "text": "Passionate about helping small businesses"
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4",
+        "feature_5"
+      ],
+      "settings": {
+        "reverse": false,
+        "subtitle": "Our Story",
+        "title": "Born from Real Business Challenges",
+        "description": "<p>Our founders spent years working with service businesses and saw the same problems everywhere: complicated booking systems, missed appointments, and frustrated customers.</p><p>In 2023, we decided to build something better. A booking platform that's beautiful, easy to use, and actually helps businesses grow. Today, we're proud to serve hundreds of businesses across Europe.</p>",
+        "cta_text": "See Our Work",
+        "cta_link": "/pages/portfolio"
+      }
+    },
+    "team_members": {
+      "type": "team-members",
+      "blocks": {
+        "team_1": {
+          "type": "member",
+          "settings": {
+            "name": "Marko Petrović",
+            "role": "Founder & CEO",
+            "bio": "10+ years building booking systems for European businesses. Previously led product at a major SaaS company.",
+            "linkedin": "",
+            "twitter": "",
+            "email": "marko@appointly.com"
+          }
+        },
+        "team_2": {
+          "type": "member",
+          "settings": {
+            "name": "Ana Jovanović",
+            "role": "Head of Design",
+            "bio": "Award-winning UX/UI designer specializing in conversion-focused interfaces. Former design lead at tech unicorn.",
+            "linkedin": "",
+            "twitter": "",
+            "email": "ana@appointly.com"
+          }
+        },
+        "team_3": {
+          "type": "member",
+          "settings": {
+            "name": "Stefan Nikolić",
+            "role": "Lead Developer",
+            "bio": "Full-stack engineer with expertise in scalable booking platforms. Built systems handling 1M+ bookings per month.",
+            "linkedin": "",
+            "twitter": "",
+            "email": "stefan@appointly.com"
+          }
+        },
+        "team_4": {
+          "type": "member",
+          "settings": {
+            "name": "Elena Rossi",
+            "role": "Customer Success Manager",
+            "bio": "Passionate about helping clients succeed. Fluent in 5 languages. Ensures every client gets white-glove service.",
+            "linkedin": "",
+            "twitter": "",
+            "email": "elena@appointly.com"
+          }
+        },
+        "team_5": {
+          "type": "member",
+          "settings": {
+            "name": "David Chen",
+            "role": "Marketing Director",
+            "bio": "Growth marketing expert with proven track record. Helps our clients attract more customers and grow revenue.",
+            "linkedin": "",
+            "twitter": "",
+            "email": "david@appointly.com"
+          }
+        },
+        "team_6": {
+          "type": "member",
+          "settings": {
+            "name": "Sophie Laurent",
+            "role": "Support Lead",
+            "bio": "Technical support specialist who genuinely cares. Available 24/7 to solve any issue, big or small.",
+            "linkedin": "",
+            "twitter": "",
+            "email": "sophie@appointly.com"
+          }
+        }
+      },
+      "block_order": [
+        "team_1",
+        "team_2",
+        "team_3",
+        "team_4",
+        "team_5",
+        "team_6"
+      ],
+      "settings": {
+        "subtitle": "Our Team",
+        "title": "Meet the People Behind Appointly",
+        "description": "A passionate team of designers, developers, and customer success experts dedicated to helping your business grow."
+      }
+    },
+    "process_about": {
+      "type": "process-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon_emoji": "💬",
+            "title": "Discovery Call",
+            "description": "We start with a free 30-minute consultation to understand your business, goals, and requirements."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon_emoji": "🎨",
+            "title": "Design & Build",
+            "description": "Our team creates a custom booking website tailored to your brand. You'll see designs within 7 days."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon_emoji": "🚀",
+            "title": "Launch & Grow",
+            "description": "We launch your site, train your team, and provide ongoing support to help you grow your bookings."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "subtitle": "How We Work",
+        "title": "Simple, Transparent Process",
+        "description": "From first call to successful launch, we make it easy and stress-free."
+      }
+    },
+    "testimonials_about": {
       "type": "testimonials-carousel",
       "blocks": {
         "testimonial_1": {
           "type": "testimonial",
           "settings": {
-            "quote": "The Appointly team delivered exactly what we needed. Our new booking website is beautiful, fast, and our customers love it!",
+            "quote": "Working with Appointly was a game-changer. They took the time to understand our business and delivered exactly what we needed. Highly recommended!",
             "author_name": "Jean-Pierre Dubois",
-            "author_role": "Owner",
+            "author_role": "Restaurant Owner",
             "company": "Lumière Restaurant",
-            "result_metric": "+45%",
-            "result_label": "More bookings"
+            "result_metric": "5★",
+            "result_label": "Rating"
           }
         },
         "testimonial_2": {
           "type": "testimonial",
           "settings": {
-            "quote": "Professional, responsive, and incredibly talented. They understood our brand and created something truly special.",
+            "quote": "The team is incredibly responsive and professional. They've been with us every step of the way, from design to ongoing support.",
             "author_name": "Sarah Johnson",
-            "author_role": "Manager",
+            "author_role": "Spa Manager",
             "company": "Glow Spa",
-            "result_metric": "5★",
-            "result_label": "Client rating"
+            "result_metric": "24/7",
+            "result_label": "Support"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Best decision we made this year. Our booking process is now seamless, and our customers love the new website.",
+            "author_name": "Mike Chen",
+            "author_role": "Studio Director",
+            "company": "Apex Fitness",
+            "result_metric": "+60%",
+            "result_label": "More bookings"
           }
         }
       },
       "block_order": [
         "testimonial_1",
-        "testimonial_2"
+        "testimonial_2",
+        "testimonial_3"
       ],
       "settings": {
-        "subtitle": "Client Feedback",
-        "title": "What Our Clients Say",
-        "description": "Real testimonials from real businesses we've helped grow.",
+        "subtitle": "Client Stories",
+        "title": "Why Businesses Choose Us",
+        "description": "Hear directly from our clients about their experience working with Appointly.",
         "autoplay": true,
         "autoplay_speed": 6
       }
     },
-    "cta_portfolio": {
+    "cta_about": {
       "type": "cta-final",
       "settings": {
         "gradient_start": "#667eea",
         "gradient_end": "#764ba2",
-        "badge_text": "🎨 Custom Design",
-        "title": "Let's Create Your Booking Website",
-        "subtitle": "Every project is unique. Let's discuss your vision and create something amazing together.",
-        "primary_cta_text": "Start Your Project",
+        "badge_text": "🤝 Let's Work Together",
+        "title": "Ready to Transform Your Booking Process?",
+        "subtitle": "Join hundreds of successful businesses already using Appointly. Let's discuss how we can help you grow.",
+        "primary_cta_text": "Schedule Free Consultation",
         "primary_cta_link": "/pages/contact",
         "secondary_cta_text": "View Pricing",
         "secondary_cta_link": "/#pricing",
-        "subtext": "💼 Free consultation • 🎨 Custom design • 🚀 Fast delivery"
+        "subtext": "📞 Free 30-min consultation • 💰 Transparent pricing • 🚀 Fast delivery"
       }
     }
   },
   "order": [
-    "portfolio_hero",
-    "portfolio_grid",
-    "stats_portfolio",
-    "testimonials_portfolio",
-    "cta_portfolio"
+    "about_hero",
+    "company_values",
+    "stats_about",
+    "text_image_story",
+    "team_members",
+    "process_about",
+    "testimonials_about",
+    "cta_about"
   ]
 }

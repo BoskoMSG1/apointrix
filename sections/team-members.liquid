@@ -1,0 +1,292 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - TEAM MEMBERS
+  Meet the team section
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="team-section section section--bg-secondary">
+  <div class="container">
+    
+    <div class="section-header text-center" data-aos="fade-up">
+      {% if section.settings.subtitle != blank %}
+        <span class="section-subtitle">{{ section.settings.subtitle }}</span>
+      {% endif %}
+      
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="team-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'member' %}
+          <div class="team-member" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}" {{ block.shopify_attributes }}>
+            
+            <div class="team-member__image">
+              {% if block.settings.photo != blank %}
+                <img 
+                  src="{{ block.settings.photo | img_url: '400x' }}"
+                  alt="{{ block.settings.name }}"
+                  loading="lazy">
+              {% else %}
+                <div class="team-member__avatar">
+                  {{ block.settings.name | slice: 0 }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="team-member__content">
+              <h3 class="team-member__name">{{ block.settings.name }}</h3>
+              <div class="team-member__role">{{ block.settings.role }}</div>
+              
+              {% if block.settings.bio != blank %}
+                <p class="team-member__bio">{{ block.settings.bio }}</p>
+              {% endif %}
+
+              {%- comment -%} Social Links {%- endcomment -%}
+              <div class="team-member__social">
+                {% if block.settings.linkedin != blank %}
+                  <a href="{{ block.settings.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M17.04 17.04h-2.96v-4.64c0-1.11-.02-2.53-1.54-2.53-1.54 0-1.78 1.2-1.78 2.45v4.72H7.8V7.5h2.84v1.3h.04c.4-.75 1.36-1.54 2.81-1.54 3 0 3.55 1.98 3.55 4.55v5.23zM4.45 6.19a1.72 1.72 0 110-3.44 1.72 1.72 0 010 3.44zM5.93 17.04H2.96V7.5h2.97v9.54zM18.52 0H1.48C.66 0 0 .65 0 1.44v17.12C0 19.35.66 20 1.48 20h17.04c.82 0 1.48-.65 1.48-1.44V1.44C20 .65 19.34 0 18.52 0z"/>
+                    </svg>
+                  </a>
+                {% endif %}
+
+                {% if block.settings.twitter != blank %}
+                  <a href="{{ block.settings.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M19.95 3.81c-.74.33-1.54.55-2.38.65a4.16 4.16 0 001.82-2.27c-.8.47-1.68.81-2.61.99a4.12 4.12 0 00-7.02 3.76 11.7 11.7 0 01-8.5-4.31 4.12 4.12 0 001.28 5.5c-.68-.02-1.32-.21-1.88-.52v.05c0 2 1.42 3.67 3.3 4.05a4.1 4.1 0 01-1.86.07 4.13 4.13 0 003.85 2.86A8.27 8.27 0 010 15.54a11.65 11.65 0 006.29 1.84c7.55 0 11.68-6.25 11.68-11.67 0-.18 0-.35-.01-.53A8.35 8.35 0 0020 3.81z"/>
+                    </svg>
+                  </a>
+                {% endif %}
+
+                {% if block.settings.email != blank %}
+                  <a href="mailto:{{ block.settings.email }}" aria-label="Email">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                      <path d="M2.5 6.66667L9.0755 11.0504C9.63533 11.4236 10.3647 11.4236 10.9245 11.0504L17.5 6.66667M4.16667 15.8333H15.8333C16.7538 15.8333 17.5 15.0871 17.5 14.1667V5.83333C17.5 4.91286 16.7538 4.16667 15.8333 4.16667H4.16667C3.24619 4.16667 2.5 4.91286 2.5 5.83333V14.1667C2.5 15.0871 3.24619 15.8333 4.16667 15.8333Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-10);
+  }
+
+  @media (min-width: 768px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .team-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .team-member {
+    text-align: center;
+    padding: var(--space-8);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-gray-200);
+    transition: all var(--duration-base) var(--ease-out);
+  }
+
+  .team-member:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+  }
+
+  .team-member__image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--space-6);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  }
+
+  .team-member__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .team-member__avatar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+  }
+
+  .team-member__name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .team-member__role {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .team-member__bio {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .team-member__social {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .team-member__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--color-text-tertiary);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .team-member__social a:hover {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Team Members",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our Team"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Meet the People Behind Appointly"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "A passionate team dedicated to helping businesses succeed with better booking systems."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "John Doe"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role",
+          "default": "Founder & CEO"
+        },
+        {
+          "type": "textarea",
+          "id": "bio",
+          "label": "Bio",
+          "default": "10+ years of experience building booking systems for service businesses."
+        },
+        {
+          "type": "url",
+          "id": "linkedin",
+          "label": "LinkedIn URL"
+        },
+        {
+          "type": "url",
+          "id": "twitter",
+          "label": "Twitter URL"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Team Members",
+      "blocks": [
+        {
+          "type": "member",
+          "settings": {
+            "name": "Marko Petrović",
+            "role": "Founder & CEO",
+            "bio": "10+ years building booking systems for European businesses."
+          }
+        },
+        {
+          "type": "member",
+          "settings": {
+            "name": "Ana Jovanović",
+            "role": "Head of Design",
+            "bio": "Creating beautiful, user-friendly interfaces that convert."
+          }
+        },
+        {
+          "type": "member",
+          "settings": {
+            "name": "Stefan Nikolić",
+            "role": "Lead Developer",
+            "bio": "Expert in scalable booking platforms and integrations."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

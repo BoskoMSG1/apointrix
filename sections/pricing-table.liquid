@@ -1,0 +1,478 @@
+{% comment %}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  APPOINTLY - PRICING TABLE
+  Professional pricing cards
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endcomment %}
+
+<section class="pricing-section section section--bg-secondary" id="pricing">
+  <div class="container">
+    
+    {%- comment -%} Section Header {%- endcomment -%}
+    <div class="section-header text-center" data-aos="fade-up">
+      {% if section.settings.subtitle != blank %}
+        <span class="section-subtitle">{{ section.settings.subtitle }}</span>
+      {% endif %}
+      
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    {%- comment -%} Billing Toggle {%- endcomment -%}
+    {% if section.settings.show_billing_toggle %}
+      <div class="pricing-toggle" data-aos="fade-up" data-aos-delay="100">
+        <button class="pricing-toggle__button active" data-billing="monthly">
+          Monthly
+        </button>
+        <button class="pricing-toggle__button" data-billing="annual">
+          Annual
+          <span class="pricing-toggle__badge">Save 20%</span>
+        </button>
+      </div>
+    {% endif %}
+
+    {%- comment -%} Pricing Cards {%- endcomment -%}
+    <div class="pricing-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'pricing_tier' %}
+          <div 
+            class="pricing-card {% if block.settings.featured %}pricing-card--featured{% endif %}" 
+            data-aos="fade-up" 
+            data-aos-delay="{{ forloop.index | times: 100 | plus: 200 }}"
+            {{ block.shopify_attributes }}>
+            
+            {% if block.settings.featured %}
+              <div class="pricing-card__badge">
+                {{ block.settings.badge_text | default: 'Most Popular' }}
+              </div>
+            {% endif %}
+
+            <div class="pricing-card__header">
+              <h3 class="pricing-card__name">{{ block.settings.name }}</h3>
+              <p class="pricing-card__tagline">{{ block.settings.tagline }}</p>
+            </div>
+
+            <div class="pricing-card__price">
+              <span class="pricing-card__currency">€</span>
+              <span class="pricing-card__amount" data-monthly-price="{{ block.settings.monthly_price }}" data-annual-price="{{ block.settings.annual_price }}">
+                {{ block.settings.monthly_price }}
+              </span>
+              <span class="pricing-card__period">/month</span>
+            </div>
+
+            {% if block.settings.setup_fee != blank %}
+              <p class="pricing-card__setup">+ €{{ block.settings.setup_fee }} setup fee</p>
+            {% endif %}
+
+            <ul class="pricing-card__features">
+              {% assign features = block.settings.features | newline_to_br | split: '<br />' %}
+              {% for feature in features %}
+                {% if feature != blank %}
+                  <li>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <circle cx="10" cy="10" r="10" fill="currentColor" opacity="0.1"/>
+                      <path d="M6 10L9 13L14 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>{{ feature }}</span>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+
+            <div class="pricing-card__cta">
+              <a href="{{ block.settings.cta_link }}" class="btn {% if block.settings.featured %}btn--primary{% else %}btn--outline{% endif %} btn--full">
+                {{ block.settings.cta_text }}
+              </a>
+            </div>
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {%- comment -%} Trust Banner {%- endcomment -%}
+    {% if section.settings.show_trust_banner %}
+      <div class="pricing-trust" data-aos="fade-up" data-aos-delay="600">
+        <p>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 1L12.5 6L18 7L14 11L15 17L10 14L5 17L6 11L2 7L7.5 6L10 1Z" fill="currentColor"/>
+          </svg>
+          {{ section.settings.trust_text }}
+        </p>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  .pricing-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-16);
+    padding: var(--space-2);
+    background-color: var(--color-white);
+    border-radius: var(--radius-full);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pricing-toggle__button {
+    position: relative;
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    background: none;
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .pricing-toggle__button.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .pricing-toggle__badge {
+    padding: var(--space-1) var(--space-2);
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-sm);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-8);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1024px) {
+    .pricing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .pricing-card {
+    position: relative;
+    padding: var(--space-8);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-2xl);
+    transition: all var(--duration-base) var(--ease-out);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .pricing-card--featured {
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .pricing-card--featured:hover {
+    transform: scale(1.05) translateY(-4px);
+  }
+
+  .pricing-card__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-2) var(--space-4);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    border-radius: var(--radius-full);
+  }
+
+  .pricing-card__header {
+    margin-bottom: var(--space-6);
+  }
+
+  .pricing-card__name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .pricing-card__tagline {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    margin: 0;
+  }
+
+  .pricing-card__price {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: var(--space-2);
+  }
+
+  .pricing-card__currency {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-right: var(--space-1);
+  }
+
+  .pricing-card__amount {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1;
+  }
+
+  .pricing-card__period {
+    font-size: var(--font-size-base);
+    color: var(--color-text-tertiary);
+    margin-left: var(--space-2);
+  }
+
+  .pricing-card__setup {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-6);
+  }
+
+  .pricing-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-8) 0;
+  }
+
+  .pricing-card__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+  }
+
+  .pricing-card__features svg {
+    flex-shrink: 0;
+    color: var(--color-success);
+    margin-top: 2px;
+  }
+
+  .pricing-trust {
+    margin-top: var(--space-16);
+    text-align: center;
+  }
+
+  .pricing-trust p {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    margin: 0;
+  }
+
+  .pricing-trust svg {
+    color: var(--color-warning);
+  }
+</style>
+
+<script>
+  // Billing toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleButtons = document.querySelectorAll('.pricing-toggle__button');
+    const priceAmounts = document.querySelectorAll('.pricing-card__amount');
+    
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const billing = this.getAttribute('data-billing');
+        
+        // Update active state
+        toggleButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Update prices
+        priceAmounts.forEach(amount => {
+          const monthlyPrice = amount.getAttribute('data-monthly-price');
+          const annualPrice = amount.getAttribute('data-annual-price');
+          
+          if (billing === 'annual' && annualPrice) {
+            amount.textContent = annualPrice;
+          } else {
+            amount.textContent = monthlyPrice;
+          }
+        });
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Pricing Table",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Pricing"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Simple, Transparent Pricing"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Choose the plan that's right for your business. All plans include 14-day free trial."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_billing_toggle",
+      "label": "Show Billing Toggle",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_banner",
+      "label": "Show Trust Banner",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_text",
+      "label": "Trust Banner Text",
+      "default": "30-day money-back guarantee • No credit card required"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pricing_tier",
+      "name": "Pricing Tier",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Plan Name",
+          "default": "Starter"
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "Tagline",
+          "default": "Perfect for solo practitioners"
+        },
+        {
+          "type": "text",
+          "id": "monthly_price",
+          "label": "Monthly Price (number only)",
+          "default": "600"
+        },
+        {
+          "type": "text",
+          "id": "annual_price",
+          "label": "Annual Price (number only)",
+          "default": "480",
+          "info": "Leave blank if not offering annual billing"
+        },
+        {
+          "type": "text",
+          "id": "setup_fee",
+          "label": "Setup Fee (optional)",
+          "info": "Number only, e.g., 100"
+        },
+        {
+          "type": "textarea",
+          "id": "features",
+          "label": "Features (one per line)",
+          "default": "Up to 100 bookings/month\n1 location\nEmail notifications\nMobile app\nBasic support"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Featured Plan",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text (for featured)",
+          "default": "Most Popular"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "Button Text",
+          "default": "Get Started"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pricing Table",
+      "blocks": [
+        {
+          "type": "pricing_tier",
+          "settings": {
+            "name": "Starter",
+            "tagline": "Perfect for solo practitioners",
+            "monthly_price": "600",
+            "features": "Up to 100 bookings/month\n1 location\nEmail notifications\nMobile app\nBasic support"
+          }
+        },
+        {
+          "type": "pricing_tier",
+          "settings": {
+            "name": "Business",
+            "tagline": "For growing businesses",
+            "monthly_price": "1200",
+            "featured": true,
+            "features": "Unlimited bookings\nUp to 5 locations\nSMS + Email notifications\nAdvanced analytics\nPriority support"
+          }
+        },
+        {
+          "type": "pricing_tier",
+          "settings": {
+            "name": "Premium",
+            "tagline": "For enterprises",
+            "monthly_price": "2500",
+            "features": "Unlimited everything\nWhite-label option\nAPI access\nDedicated manager\n24/7 phone support"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

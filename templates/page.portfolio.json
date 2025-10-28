@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "portfolio": {
+      "type": "portfolio-grid",
+      "settings": {
+        "subtitle": "Our Work",
+        "title": "Recent Projects",
+        "description": "Explore our portfolio of successful booking websites we've created for clients across Europe.",
+        "show_filters": true,
+        "cta_subtext": "Ready to get started?",
+        "cta_text": "Start Your Project",
+        "cta_link": "/pages/contact"
+      }
+    }
+  },
+  "order": ["portfolio"]
+}
